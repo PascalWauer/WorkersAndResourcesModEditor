@@ -52,7 +52,9 @@ namespace WorkersAndResourcesModEditor
                 m_WorkshopID = value;
                 this.NotifyPropertyChanged();
             }
-        }public string ModID
+        }
+        
+        public string ModID
         {
             get { return m_ModID; }
             set
@@ -124,6 +126,7 @@ namespace WorkersAndResourcesModEditor
                 NotifyPropertyChanged();
             }
         }
+
         public double ElectronicWorking
         {
             get { return m_ElectronicWorking; }

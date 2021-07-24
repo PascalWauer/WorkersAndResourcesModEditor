@@ -32,5 +32,11 @@ namespace WorkersAndResourcesModEditor
         {
             WRCommands.RightClickOnModCommand.Execute(null, this);
         }
+
+        private void KeyPressedOnSearchBox(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+                WRCommands.SearchCommand.Execute(null, this); 
+        }
     }
 }

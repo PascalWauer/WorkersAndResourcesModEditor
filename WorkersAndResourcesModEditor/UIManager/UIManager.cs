@@ -22,7 +22,7 @@ namespace WorkersAndResourcesModEditor
             MainWindow.DataContext = UIModel;
             MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.RightClickOnModCommand, this.ExecuteRightClickOnModCommand));
             MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.ReadModsCommand, this.ExecuteReadModsCommand, this.CanExecuteReadModsCommand));
-            MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.SearchCommand, this.ExecuteSearchCommand, this.CanExecuteSearchCommand));
+            MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.SearchCommand, this.ExecuteSearchCommand));
             MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.FilterCommand, this.ExecuteFilterCommand, this.CanExecuteFilterCommand));
 
             m_ModFiles = new List<FileInfo>();
@@ -41,10 +41,6 @@ namespace WorkersAndResourcesModEditor
             throw new NotImplementedException();
         }
 
-        private void CanExecuteSearchCommand(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = !string.IsNullOrEmpty(this.UIModel.Search);
-        }
 
         private void ExecuteSearchCommand(object sender, ExecutedRoutedEventArgs e)
         {

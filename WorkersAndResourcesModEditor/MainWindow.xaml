@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid>
@@ -16,8 +16,12 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -35,14 +39,44 @@
 
             <Button Margin="5" Grid.Column="2"  Width="70" Height="20" Content="Read Mods" Command="{x:Static local:WRCommands.ReadModsCommand}" Background="LightBlue">
             </Button>
-            
-            <TextBlock Margin="5" Grid.Column="3" HorizontalAlignment="Left" Text="Search" Width="100" Foreground="Black">
+
+            <Border Margin="0" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" Width="300" Background="AliceBlue">
+            </Border>
+
+            <CheckBox Margin="5" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Residential" IsChecked="{Binding Residential}">
+            </CheckBox>
+
+            <CheckBox Margin="5" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Factories" IsChecked="{Binding Factories}">
+            </CheckBox>
+
+            <CheckBox Margin="5" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Storage" IsChecked="{Binding Storage}">
+            </CheckBox>
+
+            <CheckBox Margin="5" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Connectors" IsChecked="{Binding Connectors}">
+            </CheckBox>
+
+            <CheckBox Margin="5" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Education" IsChecked="{Binding Education}">
+            </CheckBox>
+
+            <CheckBox Margin="5" Grid.Column="4" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Fire/Health" IsChecked="{Binding FireHealth}">
+            </CheckBox>
+
+            <CheckBox Margin="5" Grid.Column="5" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Shop/Attraction" IsChecked="{Binding Shop}">
+            </CheckBox>
+
+            <CheckBox Margin="5" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Power" IsChecked="{Binding Power}">
+            </CheckBox>
+
+            <CheckBox Margin="5" Grid.Column="5" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Others" IsChecked="{Binding Others}">
+            </CheckBox>
+
+            <TextBlock Margin="20,5,5,5" Grid.Column="6" Grid.Row="0" HorizontalAlignment="Left" Text="Search" Width="50" Foreground="Black">
             </TextBlock>
 
-            <TextBox Margin="5" Grid.Column="4" HorizontalAlignment="Left" Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200">
+            <TextBox Margin="5" Grid.Column="7" Grid.Row="0" HorizontalAlignment="Left" Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" KeyDown="KeyPressedOnSearchBox" Width="150">
             </TextBox>
 
-            <Button Margin="5" Grid.Column="5"  Width="70" Height="20" Content="Search" Command="{x:Static local:WRCommands.SearchCommand}" Background="LightBlue">
+            <Button Margin="5" Grid.Column="8" Grid.Row="0" Width="70" Height="20" Content="Search" Command="{x:Static local:WRCommands.SearchCommand}" Background="LightBlue">
             </Button>
         </Grid>
         <DataGrid  x:Name="DG_Mods"
@@ -62,19 +96,19 @@
                 </DataGridTextColumn>
                 <!--<DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="120" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>-->
-                <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="120" FontWeight="Normal" IsReadOnly="True">
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="100" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Workers Needed" Binding="{Binding Workers_Needed}" Width="120" FontWeight="Normal" IsReadOnly="True">
+                <DataGridTextColumn Header="Workers Needed" Binding="{Binding Workers_Needed}" Width="100" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Workers Capacity" Binding="{Binding Workers_Capacity}" Width="120" FontWeight="Normal" IsReadOnly="True">
+                <DataGridTextColumn Header="Workers Capacity" Binding="{Binding Workers_Capacity}" Width="110" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Quality of Living" Binding="{Binding Quality}" Width="80" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Electr Life" Binding="{Binding ElectronicLiving}" Width="80" FontWeight="Normal" Foreground="DeepSkyBlue" IsReadOnly="True">
+                <DataGridTextColumn Header="Electr Life" Binding="{Binding ElectronicLiving}" Width="70" FontWeight="Normal" Foreground="DeepSkyBlue" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Electr Light" Binding="{Binding ElectronicLightning}" Width="80" FontWeight="Normal" Foreground="DeepSkyBlue" IsReadOnly="True">
+                <DataGridTextColumn Header="Electr Light" Binding="{Binding ElectronicLightning}" Width="70" FontWeight="Normal" Foreground="DeepSkyBlue" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Electr Work" Binding="{Binding ElectronicWorking}" Width="80" FontWeight="Normal" Foreground="DeepSkyBlue" IsReadOnly="True">
+                <DataGridTextColumn Header="Electr Work" Binding="{Binding ElectronicWorking}" Width="70" FontWeight="Normal" Foreground="DeepSkyBlue" IsReadOnly="True">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Storage Gen" Binding="{Binding StorageCapacityGeneral}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
@@ -96,15 +130,15 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Storage Oil" Binding="{Binding StorageCapacityOil}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Special" Binding="{Binding StorageSpecialID1}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                <DataGridTextColumn Header="Special" Binding="{Binding StorageSpecialID1}" Width="60" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Capacity" Binding="{Binding StorageSpecial1Capacity}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                <DataGridTextColumn Header="Capacity" Binding="{Binding StorageSpecial1Capacity}" Width="60" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Special 2" Binding="{Binding StorageSpecialID2}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                <DataGridTextColumn Header="Special 2" Binding="{Binding StorageSpecialID2}" Width="60" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Capacity 2" Binding="{Binding StorageSpecial2Capacity}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                <DataGridTextColumn Header="Capacity 2" Binding="{Binding StorageSpecial2Capacity}" Width="70" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Heat" Binding="{Binding Heating}" Width="80" FontWeight="Normal" IsReadOnly="True">
+                <DataGridTextColumn Header="Heat" Binding="{Binding Heating}" Width="60" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
