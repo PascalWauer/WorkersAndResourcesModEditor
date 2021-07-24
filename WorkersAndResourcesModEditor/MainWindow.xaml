@@ -1,0 +1,112 @@
+﻿<Window x:Class="WorkersAndResourcesModEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorkersAndResourcesModEditor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+        
+            <TextBlock Margin="5" Grid.Column="0" HorizontalAlignment="Left" Text="Mod Folder" Width="100" Foreground="Black">
+            </TextBlock>
+
+            <TextBox Margin="5" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding ModPath}" Width="200">
+            </TextBox>
+
+            <Button Margin="5" Grid.Column="2"  Width="70" Height="20" Content="Read Mods" Command="{x:Static local:WRCommands.ReadModsCommand}" Background="LightBlue">
+            </Button>
+            
+            <TextBlock Margin="5" Grid.Column="3" HorizontalAlignment="Left" Text="Search" Width="100" Foreground="Black">
+            </TextBlock>
+
+            <TextBox Margin="5" Grid.Column="4" HorizontalAlignment="Left" Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200">
+            </TextBox>
+
+            <Button Margin="5" Grid.Column="5"  Width="70" Height="20" Content="Search" Command="{x:Static local:WRCommands.SearchCommand}" Background="LightBlue">
+            </Button>
+        </Grid>
+        <DataGrid  x:Name="DG_Mods"
+                   Grid.Row="2"
+                   Margin="5"
+                   ItemsSource="{Binding UIModelBuildingList, IsAsync=True}" AutoGenerateColumns="False" AlternationCount="2" 
+                    LoadingRow="DataGrid_LoadingRow" EnableColumnVirtualization="True" EnableRowVirtualization="True"
+                    AlternatingRowBackground="Orange" SelectionUnit="Cell" MouseRightButtonDown="OnMainWindowCellRightClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Workshop ID" Binding="{Binding WorkshopID}" Width="80" SortDirection="Descending" FontWeight="Bold" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Mod ID" Binding="{Binding ModID}" Width="120" SortDirection="Descending" FontWeight="Bold" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Building" Binding="{Binding BuildingName}" Width="150" FontWeight="Normal" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Path" Binding="{Binding FilePath}" Width="120" FontWeight="Normal" IsReadOnly="True">
+                </DataGridTextColumn>
+                <!--<DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="120" FontWeight="Normal" IsReadOnly="True">
+                </DataGridTextColumn>-->
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="120" FontWeight="Normal" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Workers Needed" Binding="{Binding Workers_Needed}" Width="120" FontWeight="Normal" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Workers Capacity" Binding="{Binding Workers_Capacity}" Width="120" FontWeight="Normal" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Quality of Living" Binding="{Binding Quality}" Width="80" FontWeight="Normal" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Electr Life" Binding="{Binding ElectronicLiving}" Width="80" FontWeight="Normal" Foreground="DeepSkyBlue" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Electr Light" Binding="{Binding ElectronicLightning}" Width="80" FontWeight="Normal" Foreground="DeepSkyBlue" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Electr Work" Binding="{Binding ElectronicWorking}" Width="80" FontWeight="Normal" Foreground="DeepSkyBlue" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Storage Gen" Binding="{Binding StorageCapacityGeneral}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Storage Open" Binding="{Binding StorageCapacityOpen}" Width="85" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Storage Cov" Binding="{Binding StorageCapacityCovered}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Storage Live" Binding="{Binding StorageCapacityLivestock}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Storage Cem" Binding="{Binding StorageCapacityCement}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Storage Cool" Binding="{Binding StorageCapacityCooler}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Storage Pass" Binding="{Binding StorageCapacityPassenger}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Storage Grav" Binding="{Binding StorageCapacityGravel}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Storage Veh" Binding="{Binding StorageCapacityVehicles}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Storage Oil" Binding="{Binding StorageCapacityOil}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Special" Binding="{Binding StorageSpecialID1}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Capacity" Binding="{Binding StorageSpecial1Capacity}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Special 2" Binding="{Binding StorageSpecialID2}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Capacity 2" Binding="{Binding StorageSpecial2Capacity}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Heat" Binding="{Binding Heating}" Width="80" FontWeight="Normal" IsReadOnly="True">
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
