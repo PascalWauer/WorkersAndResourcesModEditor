@@ -53,7 +53,19 @@ namespace WorkersAndResourcesModEditor
                 this.NotifyPropertyChanged();
             }
         }
-        
+
+        private bool m_WIP;
+
+        public bool WIP
+        {
+            get { return m_WIP; }
+            set
+            {
+                m_WIP = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public string ModID
         {
             get { return m_ModID; }

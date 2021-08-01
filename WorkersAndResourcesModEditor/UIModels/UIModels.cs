@@ -21,6 +21,17 @@ namespace WorkersAndResourcesModEditor
                 NotifyPropertyChanged();
             }
         }
+        private string m_WIPPath;
+
+        public string WIPPath
+        {
+            get { return m_WIPPath; }
+            set 
+            { 
+                m_WIPPath = value;
+                NotifyPropertyChanged();
+            }
+        }
         private string m_Search;
 
         public string Search
@@ -161,6 +172,7 @@ namespace WorkersAndResourcesModEditor
         public UIModels()
         {
             this.ModPath = @"Z:\Spiele\Steam\steamapps\workshop\content\784150";
+            this.WIPPath = @"Z:\Spiele\Steam\steamapps\common\SovietRepublic\media_soviet\workshop_wip";
             UIModelBuildingList = new ObservableCollection<UIModelBuildingIni>();
         }
 
@@ -180,7 +192,7 @@ namespace WorkersAndResourcesModEditor
                 || (!this.Factories && !this.Education && !this.Connectors && !this.FireHealth && !this.Power && !this.Residential && !this.Shop && !this.Storage && !this.Others)
                 ) 
             {
-                if (this.Search == null || (this.Search != null && (building.BuildingName.ToLower().Contains(this.Search.ToLower()) || building.Type.ToLower().Contains(Search.ToLower()))))
+                if (this.Search == null || (this.Search != null && building.BuildingName != null && (building.BuildingName.ToLower().Contains(this.Search.ToLower()) || building.Type.ToLower().Contains(Search.ToLower()))))
                     return true;
                 else
                     return false;

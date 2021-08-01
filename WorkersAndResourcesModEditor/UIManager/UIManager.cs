@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,6 +25,7 @@ namespace WorkersAndResourcesModEditor
             MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.ReadModsCommand, this.ExecuteReadModsCommand, this.CanExecuteReadModsCommand));
             MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.SearchCommand, this.ExecuteSearchCommand));
             MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.FilterCommand, this.ExecuteFilterCommand, this.CanExecuteFilterCommand));
+            MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.ToWIPCommand, this.ExecuteToWIPCommand, this.CanExecuteToWIPCommand));
 
             m_ModFiles = new List<FileInfo>();
 
@@ -31,6 +33,67 @@ namespace WorkersAndResourcesModEditor
 
         }
 
+        private void CanExecuteToWIPCommand(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void ExecuteToWIPCommand(object sender, ExecutedRoutedEventArgs e)
+        {
+            var WipList = this.UIModel.UIModelBuildingList.Where(x => x.WIP).ToList();
+            foreach (var item in WipList)
+            {
+                DirectoryInfo dir = GetModFolderPath(new DirectoryInfo(item.FilePath), item.WorkshopID);
+
+                if (!dir.Exists)
+                {
+                    throw new DirectoryNotFoundException(
+                        "Source directory does not exist or could not be found: "
+                        + item.FilePath);
+                }
+                DirectoryInfo[] dirs = dir.GetDirectories();
+
+                // If the destination directory doesn't exist, create it.       
+                Directory.CreateDirectory(UIModel.WIPPath + "\\" + item.WorkshopID);
+
+                //FileInfo[] files = dir.GetFiles();
+
+                CopyAll(dir, Directory.CreateDirectory(UIModel.WIPPath + "\\" + item.WorkshopID));
+            }
+        }
+
+        public static void CopyAll(DirectoryInfo source, DirectoryInfo target)
+        {
+            Directory.CreateDirectory(target.FullName);
+
+            // Copy each file into the new directory.
+            foreach (FileInfo fi in source.GetFiles())
+            {
+                Console.WriteLine(@"Copying {0}\{1}", target.FullName, fi.Name);
+                fi.CopyTo(Path.Combine(target.FullName, fi.Name), false);
+            }
+
+            // Copy each subdirectory using recursion.
+            foreach (DirectoryInfo diSourceSubDir in source.GetDirectories())
+            {
+                DirectoryInfo nextTargetSubDir =
+                    target.CreateSubdirectory(diSourceSubDir.Name);
+                CopyAll(diSourceSubDir, nextTargetSubDir);
+            }
+        }
+
+        private DirectoryInfo GetModFolderPath(DirectoryInfo dir, string WorkshopID)
+        {
+            DirectoryInfo ParentFolder = dir.Parent;
+            string[] ModFolderArray = ParentFolder.FullName.Split("\\");
+
+            if (ModFolderArray[ModFolderArray.Length - 1] == WorkshopID)
+            {
+                return ParentFolder;
+            }
+            else
+                return GetModFolderPath(dir.Parent, WorkshopID);
+        }
         private void CanExecuteFilterCommand(object sender, CanExecuteRoutedEventArgs e)
         {
             throw new NotImplementedException();
