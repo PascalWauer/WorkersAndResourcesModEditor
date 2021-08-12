@@ -137,6 +137,11 @@
                    ItemsSource="{Binding UIModelBuildingList, IsAsync=True}" AutoGenerateColumns="False" AlternationCount="2" 
                     LoadingRow="DataGrid_LoadingRow" EnableColumnVirtualization="True" EnableRowVirtualization="True"
                     AlternatingRowBackground="Orange" MouseRightButtonDown="OnMainWindowCellRightClick">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="OnMouseDoubleClick"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Workshop ID" Binding="{Binding WorkshopID}" Width="80" SortDirection="Descending" FontWeight="Bold" IsReadOnly="True">
                 </DataGridTextColumn>
@@ -164,7 +169,9 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Workers Capacity" Binding="{Binding Workers_Capacity}" Width="110" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Quality of Living" Binding="{Binding Quality}" Width="80" FontWeight="Normal" IsReadOnly="True">
+                <DataGridTextColumn Header="Quality of Living" Binding="{Binding Quality}" Width="90" FontWeight="Normal" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Attract. Score" Binding="{Binding AttractiveScore}" Width="80" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Electr Life" Binding="{Binding ElectronicLiving}" Width="70" FontWeight="Normal" Foreground="DeepSkyBlue" IsReadOnly="True">
                 </DataGridTextColumn>

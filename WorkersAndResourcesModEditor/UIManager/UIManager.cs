@@ -22,6 +22,7 @@ namespace WorkersAndResourcesModEditor
 
             MainWindow.DataContext = UIModel;
             MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.RightClickOnModCommand, this.ExecuteRightClickOnModCommand));
+            MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.MouseDoubleClickCommand, this.ExecuteMouseDoubleClickCommand));
             MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.ReadModsCommand, this.ExecuteReadModsCommand, this.CanExecuteReadModsCommand));
             MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.SearchCommand, this.ExecuteSearchCommand));
             MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.FilterCommand, this.ExecuteFilterCommand, this.CanExecuteFilterCommand));
@@ -31,6 +32,14 @@ namespace WorkersAndResourcesModEditor
 
             MainWindow.Show();
 
+        }
+
+        private void ExecuteMouseDoubleClickCommand(object sender, ExecutedRoutedEventArgs e)
+        {
+            DataGridCellInfo dataGridCell = this.MainWindow.DG_Mods.SelectedCells[0];
+            var item = dataGridCell.Item as UIModelBuildingIni;
+            DirectoryInfo dir = GetModFolderPath(new DirectoryInfo(item.FilePath), item.WorkshopID);
+            Process.Start("explorer.exe", dir.FullName);
         }
 
         private void CanExecuteToWIPCommand(object sender, CanExecuteRoutedEventArgs e)

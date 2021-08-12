@@ -269,7 +269,7 @@ namespace WorkersAndResourcesModEditor
                 || this.Residential && building.Type == "living" 
                 || this.Education && (building.Type == "school" || building.Type == "university" || building.Type == "kindergarten") 
                 || this.Power && (building.Type == "transformator" || building.Type == "powerplant" || building.Type == "rail_trafo") 
-                || this.Shop && (building.Type == "shop" || building.Type == "attraction" || building.Type == "pub") 
+                || this.Shop && (building.Type == "shop" || building.Type == "pub") 
                 || this.Connectors && (building.Type == "heating_switch" || building.Type == "engine")
                 || this.Station && (building.Type == "passanger_station" || building.Type == "cargo_station")
                 || this.Entertain && (building.Type == "church" || building.Type == "kino" || building.Type == "sport")

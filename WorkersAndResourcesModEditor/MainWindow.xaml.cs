@@ -38,5 +38,10 @@ namespace WorkersAndResourcesModEditor
             if (e.Key == System.Windows.Input.Key.Enter)
                 WRCommands.SearchCommand.Execute(null, this); 
         }
+
+        private void OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            WRCommands.MouseDoubleClickCommand.Execute(null, this);
+        }
     }
 }

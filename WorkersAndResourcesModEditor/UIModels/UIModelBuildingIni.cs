@@ -138,6 +138,19 @@ namespace WorkersAndResourcesModEditor
                 this.NotifyPropertyChanged();
             }
         }
+
+        private double m_AttractiveScore;
+
+        public double AttractiveScore
+        {
+            get { return m_AttractiveScore; }
+            set
+            {
+                m_AttractiveScore = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public double ElectronicLiving
         {
             get { return m_ElectronicLiving; }

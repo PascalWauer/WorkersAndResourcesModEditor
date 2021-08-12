@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace WorkersAndResourcesModEditor
@@ -56,6 +58,11 @@ namespace WorkersAndResourcesModEditor
                     // the file is reached.
                     while ((line = sr.ReadLine()) != null)
                     {
+                        if (line.StartsWith(@"//"))
+                            continue;
+
+                        line = line.Trim();
+
                         if (line.Contains("$NAME "))
                         {
                             string[] lineElements = line.Split(' ');
@@ -82,7 +89,7 @@ namespace WorkersAndResourcesModEditor
                         {
                             string[] lineElements = line.Split(' ');
 
-                            Double.TryParse(lineElements[lineElements.Length - 1], out double result);
+                            Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                             building.Quality = result;
 
                         }
@@ -95,19 +102,19 @@ namespace WorkersAndResourcesModEditor
                         if (line.Contains("$ELETRIC_WITHOUT_LIGHTING_FACTOR"))
                         {
                             string[] lineElements = line.Split(' ');
-                            Double.TryParse(lineElements[lineElements.Length - 1], out double result);
+                            Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                             building.ElectronicLightning = result;
                         }
                         if (line.Contains("$ELETRIC_WITHOUT_WORKING_FACTOR "))
                         {
                             string[] lineElements = line.Split(' ');
-                            Double.TryParse(lineElements[lineElements.Length - 1], out double result);
+                            Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                             building.ElectronicWorking = result;
                         }
                         if (line.Contains("$ELETRIC_CONSUMPTION_LIVING_WORKER_FACTOR "))
                         {
                             string[] lineElements = line.Split(' ');
-                            Double.TryParse(lineElements[lineElements.Length - 1], out double result);
+                            Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                             building.ElectronicLiving = result;
                         }
                         //category
@@ -135,8 +142,14 @@ namespace WorkersAndResourcesModEditor
                         if (line.Contains("$STORAGE_SPECIAL RESOURCE_TRANSPORT_"))
                         {
                             SetSpecialStorage(line, building);
-                        }          
-                        
+                        }
+                        //attractive
+                        if (line.Contains("$ATTRACTIVE_SCORE "))
+                        {
+                            string[] lineElements = line.Split(' ');
+                            Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                            building.AttractiveScore = result;
+                        }
                         //heat
                         if (line.Contains("$HEATING_DISABLE"))
                         {
@@ -158,70 +171,70 @@ namespace WorkersAndResourcesModEditor
             if (line.Contains("RESOURCE_TRANSPORT_OPEN"))
             {
                 string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], out double result);
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                 building.StorageCapacityOpen = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_COVERED"))
             {
                 string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], out double result);
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                 building.StorageCapacityCovered = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_LIVESTOCK"))
             {
                 string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], out double result);
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                 building.StorageCapacityLivestock = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_CEMENT"))
             {
                 string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], out double result);
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                 building.StorageCapacityCement = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_COOLER"))
             {
                 string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], out double result);
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                 building.StorageCapacityCooler = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_PASSANGER"))
             {
                 string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], out double result);
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                 building.StorageCapacityPassenger = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_GRAVEL"))
             {
                 string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], out double result);
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                 building.StorageCapacityGravel = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_VEHICLES"))
             {
                 string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], out double result);
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                 building.StorageCapacityVehicles = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_OIL"))
             {
                 string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], out double result);
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                 building.StorageCapacityOil = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_GENERAL"))
             {
                 string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], out double result);
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                 building.StorageCapacityGeneral = result;
                 return;
             }
@@ -234,8 +247,8 @@ namespace WorkersAndResourcesModEditor
         {
             if (string.IsNullOrEmpty(building.StorageSpecialID1))
             {
+                string[] lineElements = line.Split(' ').Where(x => !string.IsNullOrEmpty(x)).ToArray();
                 
-                string[] lineElements = line.Split(' ');
                 int end = lineElements.Length - 1;
                 if (string.IsNullOrEmpty(lineElements[lineElements.Length -1]))
                     end = lineElements.Length - 2;
@@ -247,7 +260,7 @@ namespace WorkersAndResourcesModEditor
             }
             else if (string.IsNullOrEmpty(building.StorageSpecialID2))
             {
-                string[] lineElements = line.Split(' ');
+                string[] lineElements = line.Split(' ').Where(x => !string.IsNullOrEmpty(x)).ToArray();
                 int end = lineElements.Length - 1;
                 if (string.IsNullOrEmpty(lineElements[lineElements.Length - 1]))
                     end = lineElements.Length - 2;

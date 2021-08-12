@@ -12,6 +12,7 @@ namespace WorkersAndResourcesModEditor
         public static readonly RoutedUICommand SearchCommand;
         public static readonly RoutedUICommand FilterCommand;
         public static readonly RoutedUICommand ToWIPCommand;
+        public static readonly RoutedUICommand MouseDoubleClickCommand;
         
 
         static WRCommands()
@@ -21,6 +22,7 @@ namespace WorkersAndResourcesModEditor
             SearchCommand = new RoutedUICommand("Execute SearchCommand", "SearchCommand", typeof(WRCommands));
             FilterCommand = new RoutedUICommand("Execute FilterCommand", "FilterCommand", typeof(WRCommands));
             ToWIPCommand = new RoutedUICommand("Execute ToWIPCommand", "ToWIPCommand", typeof(WRCommands));
+            MouseDoubleClickCommand = new RoutedUICommand("Execute MouseDoubleClickCommand", "MouseDoubleClickCommand", typeof(WRCommands));
         }
     }
 }
