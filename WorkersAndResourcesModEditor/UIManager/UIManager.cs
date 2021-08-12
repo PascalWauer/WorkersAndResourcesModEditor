@@ -137,6 +137,7 @@ namespace WorkersAndResourcesModEditor
             DirectoryInfo di = new DirectoryInfo(UIModel.ModPath);
 
             List<FileInfo> tmpModFiles = new List<FileInfo>();
+            m_ModFiles.Clear();
             m_ModFiles.AddRange(di.GetFiles("building.ini", SearchOption.AllDirectories));
 
             this.UIModel.UIModelBuildingList.Clear();
