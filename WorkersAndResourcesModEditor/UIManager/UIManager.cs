@@ -70,7 +70,8 @@ namespace WorkersAndResourcesModEditor
             foreach (FileInfo fi in source.GetFiles())
             {
                 Console.WriteLine(@"Copying {0}\{1}", target.FullName, fi.Name);
-                fi.CopyTo(Path.Combine(target.FullName, fi.Name), false);
+                if (!File.Exists(Path.Combine(target.FullName, fi.Name)))
+                    fi.CopyTo(Path.Combine(target.FullName, fi.Name), false);
             }
 
             // Copy each subdirectory using recursion.
@@ -139,7 +140,7 @@ namespace WorkersAndResourcesModEditor
 
         private void ExecuteRightClickOnModCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            if (this.MainWindow.DG_Mods.SelectedCells.Count == 1)
+            //if (this.MainWindow.DG_Mods.SelectedCells.Count == 1)
             {
                 DataGridCellInfo dataGridCell = this.MainWindow.DG_Mods.SelectedCells[0];
                 var item = dataGridCell.Item as UIModelBuildingIni;

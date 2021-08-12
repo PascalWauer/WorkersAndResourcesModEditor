@@ -5,13 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorkersAndResourcesModEditor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="1080">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="90"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Width="925" HorizontalAlignment="Left">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -28,7 +33,6 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
         
             <TextBlock Margin="5" Grid.Column="0" HorizontalAlignment="Left" Text="Mod Folder" Width="100" Foreground="Black">
@@ -49,47 +53,86 @@
             <Button Margin="5" Grid.Column="2" Grid.Row="1" Width="70" Height="20" Content="Copy Mods" Command="{x:Static local:WRCommands.ToWIPCommand}" Background="LightBlue">
             </Button>
             
-            <Border Margin="0" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" Width="300" Background="AliceBlue">
+            <Border Margin="0" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Width="215" Background="LightGreen">
+            </Border>
+            <Border Margin="0" Grid.Column="5" Grid.Row="0" Width="100" Background="LightGreen">
             </Border>
 
+            <Border Margin="0" Grid.Column="5" Grid.Row="1" Grid.RowSpan="2" Width="100" Background="brown">
+            </Border>
+            
+            <Border Margin="0" Grid.Column="6" Grid.Row="0"  Width="100" Background="yellow">
+            </Border>
+            
+            <Border Margin="0" Grid.Column="6" Grid.Row="1" Grid.RowSpan="2" Width="100" Background="OrangeRed">
+            </Border>
+            
+            <Border Margin="0" Grid.Column="7" Grid.Row="0" Grid.RowSpan="2" Width="120" Background="LightGray">
+            </Border>
+            <!-- residentials green -->
             <CheckBox Margin="5" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Residential" IsChecked="{Binding Residential}">
             </CheckBox>
-
-            <CheckBox Margin="5" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Factories" IsChecked="{Binding Factories}">
+            <CheckBox Margin="5" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Education" IsChecked="{Binding Education}">
+            </CheckBox>
+            <CheckBox Margin="5" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Fire/Health" IsChecked="{Binding FireHealth}">
+            </CheckBox>
+            <CheckBox Margin="5" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Shops/Pubs" IsChecked="{Binding Shop}">
+            </CheckBox>
+            <CheckBox Margin="5" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Entertain/Religion" IsChecked="{Binding Entertain}">
+            </CheckBox>
+            <CheckBox Margin="5" Grid.Column="4" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Attractions" IsChecked="{Binding Attraction}">
+            </CheckBox>
+            <CheckBox Margin="5" Grid.Column="5" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="City Halls" IsChecked="{Binding CityHall}">
             </CheckBox>
 
-            <CheckBox Margin="5" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Storage" IsChecked="{Binding Storage}">
+            <!-- cargo & storage brown -->
+            <CheckBox Margin="5" Grid.Column="5" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Storage" IsChecked="{Binding Storage}">
             </CheckBox>
-
-            <CheckBox Margin="5" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Connectors" IsChecked="{Binding Connectors}">
+            <CheckBox Margin="5" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Connectors" IsChecked="{Binding Connectors}">
             </CheckBox>
-
-            <CheckBox Margin="5" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Education" IsChecked="{Binding Education}">
+            
+            <!-- industry yellow -->
+            <CheckBox Margin="5" Grid.Column="6" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Factories" IsChecked="{Binding Factories}">
             </CheckBox>
-
-            <CheckBox Margin="5" Grid.Column="4" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Fire/Health" IsChecked="{Binding FireHealth}">
+            
+            <!-- energy & heat red -->
+            <CheckBox Margin="5" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Power" IsChecked="{Binding Power}">
             </CheckBox>
-
-            <CheckBox Margin="5" Grid.Column="5" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Shop/Attraction" IsChecked="{Binding Shop}">
+            <CheckBox Margin="5" Grid.Column="6" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Heating" IsChecked="{Binding Heating}">
             </CheckBox>
-
-            <CheckBox Margin="5" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Power" IsChecked="{Binding Power}">
+            
+            <!-- transportation gray -->
+            <CheckBox Margin="5" Grid.Column="7" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="DO/TO/Forklift" IsChecked="{Binding Office}">
             </CheckBox>
-
-            <CheckBox Margin="5" Grid.Column="5" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Others" IsChecked="{Binding Others}">
+            <CheckBox Margin="5" Grid.Column="7" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Stations" IsChecked="{Binding Station}">
             </CheckBox>
+            
+            <!-- others white -->
+            <CheckBox Margin="5" Grid.Column="7" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Others" IsChecked="{Binding Others}">
+            </CheckBox>            
+        </Grid>
+        
+        <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-            <TextBlock Margin="20,5,5,5" Grid.Column="6" Grid.Row="0" HorizontalAlignment="Left" Text="Search" Width="50" Foreground="Black">
-            </TextBlock>
+                <TextBox Margin="10,5" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" KeyDown="KeyPressedOnSearchBox" Width="150">
+                </TextBox>
 
-            <TextBox Margin="5" Grid.Column="7" Grid.Row="0" HorizontalAlignment="Left" Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" KeyDown="KeyPressedOnSearchBox" Width="150">
-            </TextBox>
-
-            <Button Margin="5" Grid.Column="8" Grid.Row="0" Width="70" Height="20" Content="Search" Command="{x:Static local:WRCommands.SearchCommand}" Background="LightBlue">
-            </Button>
+                <Button Margin="0,5" Grid.Column="1" Grid.Row="2" Width="70" Height="20" Content="Search" Command="{x:Static local:WRCommands.SearchCommand}" Background="LightBlue">
+                </Button>
         </Grid>
         <DataGrid  x:Name="DG_Mods"
                    Grid.Row="2"
+                   Grid.ColumnSpan="3"
                    Margin="5"
                    ItemsSource="{Binding UIModelBuildingList, IsAsync=True}" AutoGenerateColumns="False" AlternationCount="2" 
                     LoadingRow="DataGrid_LoadingRow" EnableColumnVirtualization="True" EnableRowVirtualization="True"
@@ -101,6 +144,14 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Building" Binding="{Binding BuildingName}" Width="150" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
+                <DataGridTemplateColumn Header="Image" Width="60"
+                    IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding PreviewImage}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridCheckBoxColumn Header="WIP" Binding="{Binding WIP}" Width="35">
                 </DataGridCheckBoxColumn>
                 <DataGridTextColumn Header="Path" Binding="{Binding FilePath}" Width="120" FontWeight="Normal" IsReadOnly="True">
@@ -151,6 +202,14 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Heat" Binding="{Binding Heating}" Width="60" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
+                <DataGridTemplateColumn Header="Image" Width="60"
+                    IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding PreviewImage}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

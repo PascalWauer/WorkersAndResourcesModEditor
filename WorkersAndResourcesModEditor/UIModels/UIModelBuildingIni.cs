@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -55,7 +56,6 @@ namespace WorkersAndResourcesModEditor
         }
 
         private bool m_WIP;
-
         public bool WIP
         {
             get { return m_WIP; }
@@ -93,6 +93,15 @@ namespace WorkersAndResourcesModEditor
                 this.NotifyPropertyChanged();
             }
         }
+
+        public string PreviewImage
+        {
+            get 
+            { 
+                return this.GetModFolderPath(new DirectoryInfo(this.FilePath), this.WorkshopID).FullName + @"\previewimage.png"; 
+            }
+        }
+
         public string Category
         {
             get { return m_Category; }
@@ -292,7 +301,18 @@ namespace WorkersAndResourcesModEditor
             }
         }
 
+        private DirectoryInfo GetModFolderPath(DirectoryInfo dir, string WorkshopID)
+        {
+            DirectoryInfo ParentFolder = dir.Parent;
+            string[] ModFolderArray = ParentFolder.FullName.Split("\\");
 
+            if (ModFolderArray[ModFolderArray.Length - 1] == WorkshopID)
+            {
+                return ParentFolder;
+            }
+            else
+                return GetModFolderPath(dir.Parent, WorkshopID);
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

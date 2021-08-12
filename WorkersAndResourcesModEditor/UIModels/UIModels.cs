@@ -134,6 +134,84 @@ namespace WorkersAndResourcesModEditor
             }
         }
 
+        private bool m_Entertain;
+
+        public bool Entertain
+        {
+            get { return m_Entertain; }
+            set
+            {
+                m_Entertain = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
+        private bool m_Attraction;
+
+        public bool Attraction
+        {
+            get { return m_Attraction; }
+            set
+            {
+                m_Attraction = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
+        private bool m_CityHall;
+
+        public bool CityHall
+        {
+            get { return m_CityHall; }
+            set
+            {
+                m_CityHall = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
+        private bool m_Heating;
+
+        public bool Heating
+        {
+            get { return m_Heating; }
+            set
+            {
+                m_Heating = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
+        private bool m_Office;
+
+        public bool Office
+        {
+            get { return m_Office; }
+            set
+            {
+                m_Office = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
+        private bool m_Station;
+
+        public bool Station
+        {
+            get { return m_Station; }
+            set
+            {
+                m_Station = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
         private bool m_Others;
         public bool Others
         {
@@ -185,12 +263,34 @@ namespace WorkersAndResourcesModEditor
         {
             UIModelBuildingIni building = item as UIModelBuildingIni;
 
-            if (this.Factories && building.Type == "factory" || this.Storage && building.Type == "storage" || this.FireHealth && (building.Type == "firestation" || building.Type == "hospital") 
-                || this.Residential && building.Type == "living" || this.Education && (building.Type == "school" 
-                || building.Type == "university" || building.Type == "kindergarten") || this.Power && (building.Type == "transformator" || building.Type == "powerplant") 
-                || this.Shop && (building.Type == "shop" || building.Type == "attraction") 
-                || (!this.Factories && !this.Education && !this.Connectors && !this.FireHealth && !this.Power && !this.Residential && !this.Shop && !this.Storage && !this.Others)
-                ) 
+            if (this.Factories && (building.Type == "factory" || building.Type == "production_line") 
+                || this.Storage && building.Type == "storage" 
+                || this.FireHealth && (building.Type == "firestation" || building.Type == "hospital") 
+                || this.Residential && building.Type == "living" 
+                || this.Education && (building.Type == "school" || building.Type == "university" || building.Type == "kindergarten") 
+                || this.Power && (building.Type == "transformator" || building.Type == "powerplant" || building.Type == "rail_trafo") 
+                || this.Shop && (building.Type == "shop" || building.Type == "attraction" || building.Type == "pub") 
+                || this.Connectors && (building.Type == "heating_switch" || building.Type == "engine")
+                || this.Station && (building.Type == "passanger_station" || building.Type == "cargo_station")
+                || this.Entertain && (building.Type == "church" || building.Type == "kino" || building.Type == "sport")
+                || this.Others && (building.Type == "monument" || building.Type == "gas_station" || building.Type == "pollution_meter")
+                || this.Attraction && (building.Type == "attraction" || building.Type =="hotel")
+                || this.Office && (building.Type == "distribution_office" || building.Type == "garbage_office" || building.Type == "forklift_garage")
+                || this.CityHall && building.Type == "cityhall"
+                || this.Heating && building.Type == "heating_plant"
+                || (!this.Factories && !this.Education && !this.Connectors && !this.FireHealth && !this.Power && !this.Residential && !this.Shop && !this.Storage && !this.Heating && !this.Entertain && !this.CityHall && !this.Attraction && !this.Office && !this.Station && !this.Others)
+                )
+            /* missing types: 
+                church, kino, sport -> entertainment/church
+                cargo_station -> cargo station 
+                city_hall -> city hall 
+                distribution_office, garbage_office -> DO/TO 
+                forklift_garage -> forklift 
+                gas_station -> others 
+                hotel -> attractio 
+                pollution_meter -> others  
+                passanger_station -> passenger station
+            */
             {
                 if (this.Search == null || (this.Search != null && building.BuildingName != null && (building.BuildingName.ToLower().Contains(this.Search.ToLower()) || building.Type.ToLower().Contains(Search.ToLower()))))
                     return true;
