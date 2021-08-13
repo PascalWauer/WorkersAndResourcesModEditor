@@ -272,11 +272,11 @@ namespace WorkersAndResourcesModEditor
                 || this.Power && (building.Type == "transformator" || building.Type == "powerplant" || building.Type == "rail_trafo") 
                 || this.Shop && (building.Type == "shop" || building.Type == "pub") 
                 || this.Connectors && (building.Type == "heating_switch" || building.Type == "engine")
-                || this.Station && (building.Type == "passanger_station" || building.Type == "cargo_station")
+                || this.Station && (building.Type == "passanger_station" || building.Type == "cargo_station" || building.Type == "airplane_parking")
                 || this.Entertain && (building.Type == "church" || building.Type == "kino" || building.Type == "sport")
-                || this.Others && (building.Type == "monument" || building.Type == "gas_station" || building.Type == "pollution_meter")
+                || this.Others && (building.Type == "monument" || building.Type == "gas_station" || building.Type == "pollution_meter" || building.Type == "car_dealer" || building.Type == "broadcast")
                 || this.Attraction && (building.Type == "attraction" || building.Type =="hotel")
-                || this.Office && (building.Type == "distribution_office" || building.Type == "garbage_office" || building.Type == "forklift_garage")
+                || this.Office && (building.Type == "distribution_office" || building.Type == "garbage_office" || building.Type == "forklift_garage" || building.Type == "construction_office")
                 || this.CityHall && building.Type == "cityhall"
                 || this.Heating && building.Type == "heating_plant"
                 || (!this.Factories && !this.Education && !this.Connectors && !this.FireHealth && !this.Power && !this.Residential && !this.Shop && !this.Storage && !this.Heating && !this.Entertain && !this.CityHall && !this.Attraction && !this.Office && !this.Station && !this.Others)
