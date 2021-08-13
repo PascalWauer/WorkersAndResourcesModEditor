@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,8 @@ namespace WorkersAndResourcesModEditor
             try
             {
                 UIModelBuildingIni building = new UIModelBuildingIni();
+                building.ProductionList = new ObservableCollection<UIModelWareAmount>();
+                building.ConsumptionList = new ObservableCollection<UIModelWareAmount>();
 
                 string[] ModPathArray = file.Split('\\');
                 int modPathIndex = 0;
@@ -61,7 +64,7 @@ namespace WorkersAndResourcesModEditor
                         if (line.StartsWith(@"//"))
                             continue;
 
-                        line = line.Trim();
+                        line = line.Replace("\t", " ").Trim(); ;
 
                         if (line.Contains("$NAME "))
                         {
@@ -77,12 +80,13 @@ namespace WorkersAndResourcesModEditor
                         if (line.Contains("$STORAGE RESOURCE_TRANSPORT_PASSANGER"))
                         {
                             string[] lineElements =line.Split(' ');
-                            building.Workers_Capacity = lineElements[lineElements.Length - 1];
+                            building.Workers_Capacity = int.Parse(lineElements[lineElements.Length - 1]);
                         }
                         if (line.Contains("$STORAGE_LIVING_AUTO"))
                         {
-                            string[] lineElements = line.Split(' ');
-                            building.Workers_Capacity = lineElements[lineElements.Length - 1];
+                            //string[] lineElements = line.Split(' ');
+                            //building.Workers_Capacity = lineElements[lineElements.Length - 1];
+                            building.Workers_Capacity = -1;
                         }
 
                         if (line.Contains("$QUALITY_OF_LIVING"))
@@ -154,6 +158,30 @@ namespace WorkersAndResourcesModEditor
                         if (line.Contains("$HEATING_DISABLE"))
                         {
                             building.Heating = "Disabled";
+                        }
+
+                        //production
+                        if (line.Contains("$PRODUCTION "))
+                        {
+                            string[] lineElements = line.Split(' ');
+                            string wareID = line.Split(' ')[1];
+                            Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                            building.ProductionList.Add(new UIModelWareAmount(wareID, result));
+                        }
+                        //consumption
+                        if (line.Contains("$CONSUMPTION "))
+                        {
+                            string[] lineElements = line.Split(' ');
+                            string wareID = line.Split(' ')[1];
+                            Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                            building.ConsumptionList.Add(new UIModelWareAmount(wareID, result));
+                        }
+
+                        //serve citizens
+                        if (line.Contains("$CITIZEN_ABLE_SERVE"))
+                        {
+                            string[] lineElements = line.Split(' ');
+                            building.CitizensServe = int.Parse(lineElements[1]);
                         }
                     }
                 }

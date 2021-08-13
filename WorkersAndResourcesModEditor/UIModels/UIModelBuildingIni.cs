@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -7,9 +8,56 @@ using System.Text;
 
 namespace WorkersAndResourcesModEditor
 {
+    public class UIModelWareAmount : INotifyPropertyChanged
+    {
+
+        private string m_Ware;
+
+        public string Ware
+        {
+            get { return m_Ware; }
+            set
+            {
+                if (m_Ware != value)
+                {
+                    m_Ware = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        private double m_Amount;
+
+        public double Amount
+        {
+            get { return m_Amount; }
+            set
+            {
+                if (m_Amount != value)
+                {
+                    m_Amount = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public UIModelWareAmount(string ware, double amount)
+        {
+            Ware = ware;
+            Amount = amount;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     public class UIModelBuildingIni : INotifyPropertyChanged
     {
-        private string m_Workers_Capacity;
+        private int m_Workers_Capacity;
         private string m_WorkshopID;
         private string m_ModID;
         private string m_BuildName;
@@ -36,7 +84,7 @@ namespace WorkersAndResourcesModEditor
         private double m_ElectronicLiving;
         private double m_ElectronicWorking;
         private double m_ElectronicLightning;
-        public string Workers_Capacity
+        public int Workers_Capacity
         {
             get { return m_Workers_Capacity; }
             set 
@@ -139,6 +187,77 @@ namespace WorkersAndResourcesModEditor
             }
         }
 
+        private int m_CitizensServe;
+
+        public int CitizensServe
+        {
+            get { return m_CitizensServe; }
+            set
+            {
+                if (m_CitizensServe != value)
+                {
+                    m_CitizensServe = value;
+                    this.NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private ObservableCollection<UIModelWareAmount> _ProductionList;
+        public ObservableCollection<UIModelWareAmount> ProductionList
+        {
+            get { return _ProductionList; }
+            set
+            {
+                if (_ProductionList != value)
+                {
+                    if (_ProductionList != value)
+                    {
+                        _ProductionList = value;
+                        this.NotifyPropertyChanged();
+                    }
+                }
+            }
+        }
+
+        public string ProductionSorting
+        {
+            get 
+            {
+                if (ProductionList.Count > 0)
+                    return ProductionList[0].Ware + ProductionList[0].Amount;
+                else
+                    return string.Empty;
+            }
+        }
+
+        private ObservableCollection<UIModelWareAmount> _ConsumptionList;
+        public ObservableCollection<UIModelWareAmount> ConsumptionList
+        {
+            get { return _ConsumptionList; }
+            set
+            {
+                if (_ConsumptionList != value)
+                {
+                    if (_ConsumptionList != value)
+                    {
+                        _ConsumptionList = value;
+                        this.NotifyPropertyChanged();
+                    }
+                }
+            }
+        }
+
+        public string ConsumptionSorting
+        {
+            get
+            {
+                if (ConsumptionList.Count > 0)
+                    return ConsumptionList[0].Ware + ConsumptionList[0].Amount;
+                else
+                    return string.Empty;
+            }
+        }
+
         private double m_AttractiveScore;
 
         public double AttractiveScore
@@ -169,7 +288,8 @@ namespace WorkersAndResourcesModEditor
                 m_ElectronicWorking = value;
                 NotifyPropertyChanged();
             }
-        }public double ElectronicLightning
+        }
+        public double ElectronicLightning
         {
             get { return m_ElectronicLightning; }
             set 

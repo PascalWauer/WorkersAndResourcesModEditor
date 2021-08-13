@@ -134,6 +134,8 @@ namespace WorkersAndResourcesModEditor
                 return;
             }
 
+            this.MainWindow.Cursor = Cursors.Wait;
+
             DirectoryInfo di = new DirectoryInfo(UIModel.ModPath);
 
             List<FileInfo> tmpModFiles = new List<FileInfo>();
@@ -146,6 +148,8 @@ namespace WorkersAndResourcesModEditor
             {
                 this.UIModel.UIModelBuildingList.Add(IniReader.ReadBuildingIni(file.FullName));
             }
+
+            this.MainWindow.Cursor = Cursors.Arrow;
         }
 
         private void ExecuteRightClickOnModCommand(object sender, ExecutedRoutedEventArgs e)

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorkersAndResourcesModEditor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1080">
+        Title="Workers and Resources Sowjet Republic - Mod Viewer" Height="450" Width="1200" Background="SeaShell">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="90"></RowDefinition>
@@ -35,19 +35,23 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
         
-            <TextBlock Margin="5" Grid.Column="0" HorizontalAlignment="Left" Text="Mod Folder" Width="100" Foreground="Black">
+            <TextBlock Margin="5,5,0,5" Grid.Column="0" HorizontalAlignment="Left" Text="Mod Folder" 
+                       Width="100" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black"
+                       ToolTip="Insert the path to the mods folder '784150' of Workers and Resources">
             </TextBlock>
 
-            <TextBox Margin="5" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding ModPath}" Width="200">
+            <TextBox Margin="0,5" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding ModPath}"
+                     VerticalAlignment="Center" Width="200"
+                     ToolTip="Insert the path to the mods folder '784150' of Workers and Resources">
             </TextBox>
 
-            <Button Margin="5" Grid.Column="2"  Width="70" Height="20" Content="Read Mods" Command="{x:Static local:WRCommands.ReadModsCommand}" Background="LightBlue">
+            <Button Margin="0,5" Grid.Column="2"  Width="70" Height="20" Content="Read Mods" Command="{x:Static local:WRCommands.ReadModsCommand}" Background="LightBlue">
             </Button>
 
-            <TextBlock Margin="5" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Text="Work in progress" Width="100" Foreground="Black">
+            <TextBlock Margin="5,5,0,5" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Text="Work in progress" Width="100" Foreground="Black">
             </TextBlock>
 
-            <TextBox Margin="5" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Text="{Binding WIPPath}" Width="200">
+            <TextBox Margin="0,5" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Text="{Binding WIPPath}" Width="200">
             </TextBox>
 
             <Button Margin="5" Grid.Column="2" Grid.Row="1" Width="70" Height="20" Content="Copy Mods" Command="{x:Static local:WRCommands.ToWIPCommand}" Background="LightBlue">
@@ -124,11 +128,15 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-                <TextBox Margin="10,5" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" KeyDown="KeyPressedOnSearchBox" Width="150">
+                <TextBox Margin="10,5" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" 
+                         Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                         KeyDown="KeyPressedOnSearchBox" Width="150"
+                         ToolTip="Filters the mod list by the set filters and search string. The search will check the list by building name, mod ID and type for the entered string.">
                 </TextBox>
 
-                <Button Margin="0,5" Grid.Column="1" Grid.Row="2" Width="70" Height="20" Content="Search" Command="{x:Static local:WRCommands.SearchCommand}" Background="LightBlue">
-                </Button>
+                <Button Margin="0,5" Grid.Column="1" Grid.Row="2" Width="70" Height="20" Content="Search" Command="{x:Static local:WRCommands.SearchCommand}" Background="LightBlue"
+                        ToolTip="Filters the mod list by the set filters and search string. The search will check the list by building name, mod ID and type for the entered string.">
+            </Button>
         </Grid>
         <DataGrid  x:Name="DG_Mods"
                    Grid.Row="2"
@@ -136,10 +144,11 @@
                    Margin="5"
                    ItemsSource="{Binding UIModelBuildingList, IsAsync=True}" AutoGenerateColumns="False" AlternationCount="2" 
                     LoadingRow="DataGrid_LoadingRow" EnableColumnVirtualization="True" EnableRowVirtualization="True"
-                    AlternatingRowBackground="Orange" MouseRightButtonDown="OnMainWindowCellRightClick">
+                    AlternatingRowBackground="LightGray" MouseRightButtonDown="OnMainWindowCellRightClick">
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="OnMouseDoubleClick"/>
+                    <Setter Property="ToolTip" Value="{Binding BuildingName}"></Setter>
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
@@ -161,36 +170,141 @@
                 </DataGridCheckBoxColumn>
                 <DataGridTextColumn Header="Path" Binding="{Binding FilePath}" Width="120" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
-                <!--<DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="120" FontWeight="Normal" IsReadOnly="True">
-                </DataGridTextColumn>-->
                 <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="100" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Workers Needed" Binding="{Binding Workers_Needed}" Width="100" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
+                <DataGridTextColumn Header="Serve Citizens" Binding="{Binding CitizensServe}" Width="90" FontWeight="Normal" IsReadOnly="True">
+                </DataGridTextColumn>
+                <!-- Production -->
+                <DataGridTemplateColumn Header="Production" Width="140" 
+                                        ScrollViewer.CanContentScroll="False" 
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                        SortMemberPath="ProductionSorting">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DataGrid ItemsSource="{Binding ProductionList, IsAsync=False}" 
+                                      AutoGenerateColumns="False" 
+                                      Background="Transparent" 
+                                      BorderThickness="0"
+                                      BorderBrush="Transparent"
+                                      HeadersVisibility="None"
+                                      EnableColumnVirtualization="True" 
+                                      EnableRowVirtualization="True"
+                                      IsHitTestVisible="False"
+                                      GridLinesVisibility="None"
+                                      RowBackground="Transparent"
+                                      >
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="Background" Value="Transparent"></Setter>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Ware}" Width="90" FontWeight="Normal" IsReadOnly="True">
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding Amount}" Width="*" FontWeight="Normal" IsReadOnly="True">
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!-- Consumption -->
+                <DataGridTemplateColumn Header="Consumption" Width="140" 
+                                        ScrollViewer.CanContentScroll="False" 
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled" SortMemberPath="ConsumptionSorting">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DataGrid ItemsSource="{Binding ConsumptionList, IsAsync=False}" 
+                                      AutoGenerateColumns="False" 
+                                      Background="Transparent" 
+                                      BorderThickness="0"
+                                      BorderBrush="Transparent"
+                                      HeadersVisibility="None"
+                                      EnableColumnVirtualization="True" 
+                                      EnableRowVirtualization="True"
+                                      GridLinesVisibility="None"
+                                      RowBackground="Transparent"
+                                      IsHitTestVisible="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Ware}" Width="90" FontWeight="Normal" IsReadOnly="True">
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding Amount}" Width="*" FontWeight="Normal" IsReadOnly="True">
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
                 <DataGridTextColumn Header="Workers Capacity" Binding="{Binding Workers_Capacity}" Width="110" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Quality of Living" Binding="{Binding Quality}" Width="90" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Attract. Score" Binding="{Binding AttractiveScore}" Width="80" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Electr Life" Binding="{Binding ElectronicLiving}" Width="70" FontWeight="Normal" Foreground="DeepSkyBlue" IsReadOnly="True">
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Electr Light" Binding="{Binding ElectronicLightning}" Width="70" FontWeight="Normal" Foreground="DeepSkyBlue" IsReadOnly="True">
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Electr Work" Binding="{Binding ElectronicWorking}" Width="70" FontWeight="Normal" Foreground="DeepSkyBlue" IsReadOnly="True">
-                </DataGridTextColumn>
+
+                <DataGridTemplateColumn Header="Electricity" Width="100" SortMemberPath="ElectronicWorking">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="2" Text="Living"/>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Text="Lightning"/>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Working"/>
+                                <TextBlock Grid.Column="1" Grid.Row="2" Margin="5,0,0,0" Text="{Binding ElectronicLiving}" Foreground="LawnGreen" />
+                                <TextBlock Grid.Column="1" Grid.Row="1" Margin="5,0,0,0" Text="{Binding ElectronicLightning}" Foreground="Black"/>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Margin="5,0,0,0" Text="{Binding ElectronicWorking}" Foreground="OrangeRed"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+
                 <DataGridTextColumn Header="Storage Gen" Binding="{Binding StorageCapacityGeneral}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Storage Open" Binding="{Binding StorageCapacityOpen}" Width="85" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Storage Cov" Binding="{Binding StorageCapacityCovered}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Storage Live" Binding="{Binding StorageCapacityLivestock}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
-                </DataGridTextColumn>
+
                 <DataGridTextColumn Header="Storage Cem" Binding="{Binding StorageCapacityCement}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Storage Cool" Binding="{Binding StorageCapacityCooler}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
-                </DataGridTextColumn>
+
+                <DataGridTemplateColumn Header="Storage Meat" Width="100" SortMemberPath="StorageCapacityCooler">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Cool"/>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Text="Livestock"/>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Margin="5,0,0,0" Text="{Binding StorageCapacityCooler}" />
+                                <TextBlock Grid.Column="1" Grid.Row="1" Margin="5,0,0,0" Text="{Binding StorageCapacityLivestock}" />
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
                 <DataGridTextColumn Header="Storage Pass" Binding="{Binding StorageCapacityPassenger}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Storage Grav" Binding="{Binding StorageCapacityGravel}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
@@ -199,14 +313,48 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Storage Oil" Binding="{Binding StorageCapacityOil}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Special" Binding="{Binding StorageSpecialID1}" Width="60" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Capacity" Binding="{Binding StorageSpecial1Capacity}" Width="60" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Special 2" Binding="{Binding StorageSpecialID2}" Width="60" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Capacity 2" Binding="{Binding StorageSpecial2Capacity}" Width="70" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
-                </DataGridTextColumn>
+
+                <DataGridTemplateColumn Header="Special Storage" Width="120" SortMemberPath="StorageSpecial1Capacity">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding StorageSpecialID1}"/>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding StorageSpecialID2}"/>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Margin="5,0,0,0" Text="{Binding StorageSpecial1Capacity}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding StorageSpecial1Capacity}" Value="0">
+                                                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <TextBlock Grid.Column="1" Grid.Row="1" Margin="5,0,0,0" Text="{Binding StorageSpecial2Capacity}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding StorageSpecial2Capacity}" Value="0">
+                                                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
                 <DataGridTextColumn Header="Heat" Binding="{Binding Heating}" Width="60" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
                 <DataGridTemplateColumn Header="Image" Width="60"

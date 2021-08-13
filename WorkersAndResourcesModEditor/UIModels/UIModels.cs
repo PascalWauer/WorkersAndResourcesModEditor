@@ -249,6 +249,7 @@ namespace WorkersAndResourcesModEditor
 
         public UIModels()
         {
+            //Z:\Spiele\Steam\steamapps\workshop\content\784150
             this.ModPath = @"Z:\Spiele\Steam\steamapps\workshop\content\784150";
             this.WIPPath = @"Z:\Spiele\Steam\steamapps\common\SovietRepublic\media_soviet\workshop_wip";
             UIModelBuildingList = new ObservableCollection<UIModelBuildingIni>();
