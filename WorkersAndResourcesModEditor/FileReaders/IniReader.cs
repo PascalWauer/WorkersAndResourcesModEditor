@@ -100,8 +100,8 @@ namespace WorkersAndResourcesModEditor
                         if (line.Contains("$WORKERS_NEEDED"))
                         {
                             string[] lineElements = line.Split(' ');
-                            building.Workers_Needed = lineElements[lineElements.Length - 1];
-                            
+                            building.Workers_Needed = int.Parse(lineElements[1]);
+
                         }
                         if (line.Contains("$ELETRIC_WITHOUT_LIGHTING_FACTOR"))
                         {

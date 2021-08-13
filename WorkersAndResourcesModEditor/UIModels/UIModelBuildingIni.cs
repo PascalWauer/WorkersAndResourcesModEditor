@@ -65,7 +65,7 @@ namespace WorkersAndResourcesModEditor
         private string m_Category;
         private string m_Type;
         private double m_Quality;
-        private string m_WorkersNeeded;
+        private int m_WorkersNeeded;
         private string m_Heating;
         private double m_StorageCapacityOpen;
         private double m_StorageCapacityCovered;
@@ -177,7 +177,7 @@ namespace WorkersAndResourcesModEditor
                 this.NotifyPropertyChanged();
             }
         }
-        public string Workers_Needed
+        public int Workers_Needed
         {
             get { return m_WorkersNeeded; }
             set
