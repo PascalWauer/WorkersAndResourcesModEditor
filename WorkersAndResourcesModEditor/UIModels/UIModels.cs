@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows;
 using System.Windows.Data;
 
 namespace WorkersAndResourcesModEditor
@@ -54,6 +55,7 @@ namespace WorkersAndResourcesModEditor
             {
                 m_Factories = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
 
@@ -65,6 +67,7 @@ namespace WorkersAndResourcesModEditor
             {
                 m_Residential = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
 
@@ -76,6 +79,7 @@ namespace WorkersAndResourcesModEditor
             {
                 m_Storage = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
 
@@ -87,6 +91,7 @@ namespace WorkersAndResourcesModEditor
             {
                 m_Connectors = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
 
@@ -98,6 +103,7 @@ namespace WorkersAndResourcesModEditor
             {
                 m_Education = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
 
@@ -109,6 +115,7 @@ namespace WorkersAndResourcesModEditor
             {
                 m_FireHealth = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
 
@@ -120,6 +127,7 @@ namespace WorkersAndResourcesModEditor
             {
                 m_Shop = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
 
@@ -131,6 +139,7 @@ namespace WorkersAndResourcesModEditor
             {
                 m_Power = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
 
@@ -143,12 +152,11 @@ namespace WorkersAndResourcesModEditor
             {
                 m_Entertain = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
 
-
         private bool m_Attraction;
-
         public bool Attraction
         {
             get { return m_Attraction; }
@@ -156,12 +164,11 @@ namespace WorkersAndResourcesModEditor
             {
                 m_Attraction = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
 
-
         private bool m_CityHall;
-
         public bool CityHall
         {
             get { return m_CityHall; }
@@ -169,12 +176,12 @@ namespace WorkersAndResourcesModEditor
             {
                 m_CityHall = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
 
 
         private bool m_Heating;
-
         public bool Heating
         {
             get { return m_Heating; }
@@ -182,12 +189,11 @@ namespace WorkersAndResourcesModEditor
             {
                 m_Heating = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
 
-
         private bool m_Office;
-
         public bool Office
         {
             get { return m_Office; }
@@ -195,12 +201,11 @@ namespace WorkersAndResourcesModEditor
             {
                 m_Office = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
 
-
         private bool m_Station;
-
         public bool Station
         {
             get { return m_Station; }
@@ -208,9 +213,9 @@ namespace WorkersAndResourcesModEditor
             {
                 m_Station = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
-
 
         private bool m_Others;
         public bool Others
@@ -220,9 +225,48 @@ namespace WorkersAndResourcesModEditor
             {
                 m_Others = value;
                 NotifyPropertyChanged();
+                SetVisibility();
             }
         }
 
+
+
+        public bool NoFilters
+        {
+            get {
+                if (!Residential && !Education && !FireHealth && !Shop && !Entertain && !Attraction && !CityHall && !Connectors && !Storage && !Factories && !Power && !Heating && !Station && !Office)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
+
+        #endregion
+
+        #region Visibilities
+
+        private Visibility m_VisibilityFactories;
+        public Visibility VisibilityFactories
+        {
+            get 
+            {
+                return m_VisibilityFactories;
+            }
+            set
+            {
+                m_VisibilityFactories = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private void SetVisibility()
+        {
+            if (Factories == true || Power || NoFilters)
+                VisibilityFactories = Visibility.Visible;
+            else
+                VisibilityFactories = Visibility.Collapsed;
+        }
         #endregion
 
         private ICollectionView m_UIModelBuildingListDataView { get; set; }
@@ -257,7 +301,7 @@ namespace WorkersAndResourcesModEditor
 
         public void SetFilters()
         {
-            m_UIModelBuildingListDataView.Filter = this.FilterUIModelBuildingList; 
+            m_UIModelBuildingListDataView.Filter = this.FilterUIModelBuildingList;
         }
 
         private bool FilterUIModelBuildingList(object item)

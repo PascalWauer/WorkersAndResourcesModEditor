@@ -187,6 +187,7 @@ namespace WorkersAndResourcesModEditor
                 }
                 if (building.Type == null)
                     building.Type = "unknown";
+                building.CalculatPrices();
                 return building;
             }
             catch (global::System.Exception)

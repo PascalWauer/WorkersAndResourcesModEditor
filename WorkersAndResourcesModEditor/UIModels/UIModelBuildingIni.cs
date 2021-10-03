@@ -247,6 +247,23 @@ namespace WorkersAndResourcesModEditor
             }
         }
 
+        private double m_PriceConsumption;
+        private double m_PriceProduction;
+        public double PriceConsumption
+        {
+            get { return m_PriceConsumption; }
+        }
+        public double PriceProduction
+        {
+            get { return m_PriceProduction; }
+        }
+        private double m_Margin;
+        public double Margin
+        {
+            get {
+                    return m_Margin;
+                }
+        }
         public string ConsumptionSorting
         {
             get
@@ -456,5 +473,32 @@ namespace WorkersAndResourcesModEditor
             }
         }
 
+
+        private double CalculatePrice(ObservableCollection<UIModelWareAmount> Wares)
+        {
+            double sum = 0;
+            foreach (UIModelWareAmount ware in Wares)
+            {
+                double value;
+                if (PriceLists.PriceListSell.TryGetValue(ware.Ware, out value))
+                    sum = sum + ware.Amount * value;
+            }
+            return sum;
+        }
+
+        public void CalculatPrices()
+        {
+            if (BuildingName == "Asphalt plant_2")
+            {
+                m_Margin = 0;
+            }
+            m_PriceConsumption = this.CalculatePrice(ConsumptionList);
+            m_PriceProduction = this.CalculatePrice(ProductionList);
+            if (PriceConsumption != 0)
+                m_Margin = (PriceProduction * 100 / PriceConsumption) - 100;
+            NotifyPropertyChanged("PriceProduction");
+            NotifyPropertyChanged("PriceConsumption");
+            NotifyPropertyChanged("Margin");
+        }
     }
 }

@@ -158,7 +158,7 @@ namespace WorkersAndResourcesModEditor
             {
                 DataGridCellInfo dataGridCell = this.MainWindow.DG_Mods.SelectedCells[0];
                 var item = dataGridCell.Item as UIModelBuildingIni;
-                Process.Start("notepad.exe", item.FilePath);
+                Process.Start(@"C:\Program Files (x86)\Notepad++\notepad++.exe", item.FilePath);
             }
         }
     }
