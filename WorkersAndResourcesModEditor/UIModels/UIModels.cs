@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
@@ -430,7 +431,7 @@ namespace WorkersAndResourcesModEditor
                 passanger_station -> passenger station
             */
             {
-                if (this.Search == null || (this.Search != null && building.BuildingName != null && (building.BuildingName.ToLower().Contains(this.Search.ToLower()) || building.Type.ToLower().Contains(Search.ToLower()))))
+                if (this.Search == null || (this.Search != null && building.BuildingName != null && (building.BuildingName.ToLower().Contains(this.Search.ToLower()) || building.ProductionList.Any(x => x.Ware.Contains(this.Search.ToLower())) || building.Type.ToLower().Contains(Search.ToLower()))))
                     return true;
                 else
                     return false;
