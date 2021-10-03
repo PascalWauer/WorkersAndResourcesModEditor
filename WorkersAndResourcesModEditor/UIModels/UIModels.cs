@@ -288,11 +288,42 @@ namespace WorkersAndResourcesModEditor
             }
         }
 
+        private Visibility m_VisibilityWorkersNeeded;
+        public Visibility VisibilityWorkersNeeded
+        {
+            get
+            {
+                return m_VisibilityWorkersNeeded;
+            }
+            set
+            {
+                m_VisibilityWorkersNeeded = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private Visibility m_VisibilityStorages;
+        public Visibility VisibilityStorages
+        {
+            get
+            {
+                return m_VisibilityStorages;
+            }
+            set
+            {
+                m_VisibilityStorages = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         private void SetVisibility()
         {
+            SetFilters();
             SetVisibilityFactories();
             SetVisibilityResidentials();
             SetVisibilityAttractions();
+            SetVisibilityWorkersNeeded();
+            SetVisibilityStorages();
         }
         private void SetVisibilityFactories()
         {
@@ -314,6 +345,20 @@ namespace WorkersAndResourcesModEditor
                 VisibilityAttractions = Visibility.Visible;
             else
                 VisibilityAttractions = Visibility.Collapsed;
+        }
+        private void SetVisibilityWorkersNeeded()
+        {
+            if (Education == true || FireHealth == true || Shop == true || Attraction == true || Entertain == true || CityHall == true || Factories == true || Power == true || Heating == true || NoFilters)
+                VisibilityWorkersNeeded = Visibility.Visible;
+            else
+                VisibilityWorkersNeeded = Visibility.Collapsed;
+        }
+        private void SetVisibilityStorages()
+        {
+            if (Shop == true || Entertain == true || Connectors == true || Storage == true || Factories == true || Power == true || Heating == true || Station == true || NoFilters)
+                VisibilityStorages = Visibility.Visible;
+            else
+                VisibilityStorages = Visibility.Collapsed;
         }
         #endregion
 

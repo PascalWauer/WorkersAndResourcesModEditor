@@ -174,9 +174,27 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="100" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Workers Needed" Binding="{Binding Workers_Needed}" Width="100" FontWeight="Normal" IsReadOnly="True">
+                <DataGridTextColumn Header="Workers Needed" 
+                                    Binding="{Binding Workers_Needed}" 
+                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityWorkersNeededElement}}"
+                                    Width="100" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Serve Citizens" Binding="{Binding CitizensServe}" Width="90" FontWeight="Normal" IsReadOnly="True">
+                <DataGridTextColumn Header="Serve Citizens" 
+                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityWorkersNeededElement}}"
+                                    Binding="{Binding CitizensServe}" 
+                                    Width="90" FontWeight="Normal" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Workers Capacity" Binding="{Binding Workers_Capacity}" Width="110" FontWeight="Normal" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Quality of Living" 
+                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityResidentialsElement}}"
+                                    Binding="{Binding Quality}" 
+                                    Width="90" FontWeight="Normal" IsReadOnly="True">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Attract. Score" 
+                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityAttractionsElement}}"
+                                    Binding="{Binding AttractiveScore}" 
+                                    Width="80" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
                 <!-- Production -->
                 <DataGridTemplateColumn Header="Production" Width="140" 
@@ -258,18 +276,6 @@
                                     Binding="{Binding Margin, StringFormat=N1}" Width="60" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Header="Workers Capacity" Binding="{Binding Workers_Capacity}" Width="110" FontWeight="Normal" IsReadOnly="True">
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Quality of Living" 
-                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityResidentialsElement}}"
-                                    Binding="{Binding Quality}" 
-                                    Width="90" FontWeight="Normal" IsReadOnly="True">
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Attract. Score" 
-                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityAttractionsElement}}"
-                                    Binding="{Binding AttractiveScore}" 
-                                    Width="80" FontWeight="Normal" IsReadOnly="True">
-                </DataGridTextColumn>
 
                 <DataGridTemplateColumn Header="Electricity" Width="100" SortMemberPath="ElectronicWorking">
                     <DataGridTemplateColumn.CellTemplate>
@@ -297,17 +303,23 @@
 
 
 
-                <DataGridTextColumn Header="Storage Gen" Binding="{Binding StorageCapacityGeneral}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                <DataGridTextColumn Header="Storage Gen" 
+                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}"
+                                    Binding="{Binding StorageCapacityGeneral}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Storage Open" Binding="{Binding StorageCapacityOpen}" Width="85" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                <DataGridTextColumn Header="Storage Open" 
+                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}"
+                                    Binding="{Binding StorageCapacityOpen}" Width="85" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Storage Cov" Binding="{Binding StorageCapacityCovered}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                <DataGridTextColumn Header="Storage Cov" 
+                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}"
+                                    Binding="{Binding StorageCapacityCovered}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
 
                 <!--<DataGridTextColumn Header="Storage Cem" Binding="{Binding StorageCapacityCement}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>-->
 
-                <DataGridTemplateColumn Header="Storage Build" Width="80" SortMemberPath="StorageCapacityCement">
+                <DataGridTemplateColumn Header="Storage Build" Width="80" SortMemberPath="StorageCapacityCement" Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Grid>
@@ -327,8 +339,8 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                
-                <DataGridTemplateColumn Header="Storage Meat" Width="100" SortMemberPath="StorageCapacityCooler">
+
+                <DataGridTemplateColumn Header="Storage Meat" Width="100" SortMemberPath="StorageCapacityCooler" Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Grid>
@@ -349,16 +361,24 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTextColumn Header="Storage Pass" Binding="{Binding StorageCapacityPassenger}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                <DataGridTextColumn Header="Storage Pass" 
+                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}"
+                                    Binding="{Binding StorageCapacityPassenger}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Storage Grav" Binding="{Binding StorageCapacityGravel}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                <DataGridTextColumn Header="Storage Grav" 
+                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}"
+                                    Binding="{Binding StorageCapacityGravel}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Storage Veh" Binding="{Binding StorageCapacityVehicles}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                <DataGridTextColumn Header="Storage Veh" 
+                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}"
+                                    Binding="{Binding StorageCapacityVehicles}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Storage Oil" Binding="{Binding StorageCapacityOil}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                <DataGridTextColumn Header="Storage Oil" 
+                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}"
+                                    Binding="{Binding StorageCapacityOil}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
 
-                <DataGridTemplateColumn Header="Special Storage" Width="120" SortMemberPath="StorageSpecial1Capacity">
+                <DataGridTemplateColumn Header="Special Storage" Width="120" SortMemberPath="StorageSpecial1Capacity" Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Grid>
@@ -415,5 +435,7 @@
         <FrameworkElement x:Name="dummyVisibilityFactoriesElement" Visibility="{Binding VisibilityFactories}"/>
         <FrameworkElement x:Name="dummyVisibilityResidentialsElement" Visibility="{Binding VisibilityResidentials}"/>
         <FrameworkElement x:Name="dummyVisibilityAttractionsElement" Visibility="{Binding VisibilityAttractions}"/>
+        <FrameworkElement x:Name="dummyVisibilityWorkersNeededElement" Visibility="{Binding VisibilityWorkersNeeded}"/>
+        <FrameworkElement x:Name="dummyVisibilityStoragesElement" Visibility="{Binding VisibilityStorages}"/>
     </Grid>
 </Window>

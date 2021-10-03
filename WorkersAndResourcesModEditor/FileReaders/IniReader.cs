@@ -197,8 +197,6 @@ namespace WorkersAndResourcesModEditor
         }
         private static void SetStorage(string line, UIModelBuildingIni building)
         {
-            if (building.BuildingName == "6168")
-                building.StorageCapacityOpen = 0;
             if (line.Contains("RESOURCE_TRANSPORT_OPEN"))
             {
                 string[] lineElements = line.Split(' ');
