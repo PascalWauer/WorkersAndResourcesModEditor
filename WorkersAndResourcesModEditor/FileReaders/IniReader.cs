@@ -139,7 +139,7 @@ namespace WorkersAndResourcesModEditor
                         }
                         
                         //storage
-                        if (line.Contains("$STORAGE RESOURCE_TRANSPORT_"))
+                        if (line.Contains("$STORAGE RESOURCE_TRANSPORT_") || line.Contains("$STORAGE_IMPORT") || line.Contains("$STORAGE_EXPORT"))
                         {
                             SetStorage(line, building);
                         }
@@ -197,6 +197,8 @@ namespace WorkersAndResourcesModEditor
         }
         private static void SetStorage(string line, UIModelBuildingIni building)
         {
+            if (building.BuildingName == "6168")
+                building.StorageCapacityOpen = 0;
             if (line.Contains("RESOURCE_TRANSPORT_OPEN"))
             {
                 string[] lineElements = line.Split(' ');
@@ -244,6 +246,13 @@ namespace WorkersAndResourcesModEditor
                 string[] lineElements = line.Split(' ');
                 Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                 building.StorageCapacityGravel = result;
+                return;
+            }
+            if (line.Contains("RESOURCE_TRANSPORT_CONCRETE"))
+            {
+                string[] lineElements = line.Split(' ');
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                building.StorageCapacityConcrete = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_VEHICLES"))

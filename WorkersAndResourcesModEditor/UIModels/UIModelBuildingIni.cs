@@ -74,6 +74,7 @@ namespace WorkersAndResourcesModEditor
         private double m_StorageCapacityCooler;
         private double m_StorageCapacityPassenger;
         private double m_StorageCapacityGravel;
+        private double m_StorageCapacityConcrete;
         private double m_StorageCapacityVehicles;
         private double m_StorageCapacityOil;
         private double m_StorageCapacityGeneral;
@@ -384,6 +385,15 @@ namespace WorkersAndResourcesModEditor
             set
             {
                 m_StorageCapacityGravel = value;
+                this.NotifyPropertyChanged();
+            }
+        }
+        public double StorageCapacityConcrete
+        {
+            get { return m_StorageCapacityConcrete; }
+            set
+            {
+                m_StorageCapacityConcrete = value;
                 this.NotifyPropertyChanged();
             }
         }

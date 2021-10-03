@@ -260,9 +260,15 @@
 
                 <DataGridTextColumn Header="Workers Capacity" Binding="{Binding Workers_Capacity}" Width="110" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Quality of Living" Binding="{Binding Quality}" Width="90" FontWeight="Normal" IsReadOnly="True">
+                <DataGridTextColumn Header="Quality of Living" 
+                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityResidentialsElement}}"
+                                    Binding="{Binding Quality}" 
+                                    Width="90" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Attract. Score" Binding="{Binding AttractiveScore}" Width="80" FontWeight="Normal" IsReadOnly="True">
+                <DataGridTextColumn Header="Attract. Score" 
+                                    Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityAttractionsElement}}"
+                                    Binding="{Binding AttractiveScore}" 
+                                    Width="80" FontWeight="Normal" IsReadOnly="True">
                 </DataGridTextColumn>
 
                 <DataGridTemplateColumn Header="Electricity" Width="100" SortMemberPath="ElectronicWorking">
@@ -298,9 +304,30 @@
                 <DataGridTextColumn Header="Storage Cov" Binding="{Binding StorageCapacityCovered}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Header="Storage Cem" Binding="{Binding StorageCapacityCement}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
-                </DataGridTextColumn>
+                <!--<DataGridTextColumn Header="Storage Cem" Binding="{Binding StorageCapacityCement}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
+                </DataGridTextColumn>-->
 
+                <DataGridTemplateColumn Header="Storage Build" Width="80" SortMemberPath="StorageCapacityCement">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Cement"/>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Text="Concrete"/>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Margin="5,0,0,0" Text="{Binding StorageCapacityCement}" />
+                                <TextBlock Grid.Column="1" Grid.Row="1" Margin="5,0,0,0" Text="{Binding StorageCapacityConcrete}" />
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
                 <DataGridTemplateColumn Header="Storage Meat" Width="100" SortMemberPath="StorageCapacityCooler">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -386,5 +413,7 @@
         </DataGrid>
 
         <FrameworkElement x:Name="dummyVisibilityFactoriesElement" Visibility="{Binding VisibilityFactories}"/>
+        <FrameworkElement x:Name="dummyVisibilityResidentialsElement" Visibility="{Binding VisibilityResidentials}"/>
+        <FrameworkElement x:Name="dummyVisibilityAttractionsElement" Visibility="{Binding VisibilityAttractions}"/>
     </Grid>
 </Window>

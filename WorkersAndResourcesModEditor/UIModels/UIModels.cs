@@ -260,12 +260,60 @@ namespace WorkersAndResourcesModEditor
             }
         }
 
+        private Visibility m_VisibilityResidentials;
+        public Visibility VisibilityResidentials
+        {
+            get
+            {
+                return m_VisibilityResidentials;
+            }
+            set
+            {
+                m_VisibilityResidentials = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private Visibility m_VisibilityAttractions;
+        public Visibility VisibilityAttractions
+        {
+            get
+            {
+                return m_VisibilityAttractions;
+            }
+            set
+            {
+                m_VisibilityAttractions = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         private void SetVisibility()
+        {
+            SetVisibilityFactories();
+            SetVisibilityResidentials();
+            SetVisibilityAttractions();
+        }
+        private void SetVisibilityFactories()
         {
             if (Factories == true || Power || NoFilters)
                 VisibilityFactories = Visibility.Visible;
             else
                 VisibilityFactories = Visibility.Collapsed;
+        }
+        private void SetVisibilityResidentials()
+        {
+            if (Residential == true || NoFilters)
+                VisibilityResidentials = Visibility.Visible;
+            else
+                VisibilityResidentials = Visibility.Collapsed;
+        }
+        private void SetVisibilityAttractions()
+        {
+            if (Attraction == true || Entertain == true || Shop == true || NoFilters)
+                VisibilityAttractions = Visibility.Visible;
+            else
+                VisibilityAttractions = Visibility.Collapsed;
         }
         #endregion
 
