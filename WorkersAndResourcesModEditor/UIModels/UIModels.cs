@@ -12,8 +12,9 @@ namespace WorkersAndResourcesModEditor
 {
     public class UIModels : INotifyPropertyChanged
     {
-        private string m_ModPath;
+        public string ConfigPath { get; set; }
 
+        private string m_ModPath;
         public string ModPath
         {
             get { return m_ModPath; }
@@ -388,8 +389,8 @@ namespace WorkersAndResourcesModEditor
         public UIModels()
         {
             //Z:\Spiele\Steam\steamapps\workshop\content\784150
-            this.ModPath = @"Z:\Spiele\Steam\steamapps\workshop\content\784150";
-            this.WIPPath = @"Z:\Spiele\Steam\steamapps\common\SovietRepublic\media_soviet\workshop_wip";
+            this.ModPath = @"Enter path to mods folder here! (... \784150)";
+            this.WIPPath = @"";
             UIModelBuildingList = new ObservableCollection<UIModelBuildingIni>();
         }
 

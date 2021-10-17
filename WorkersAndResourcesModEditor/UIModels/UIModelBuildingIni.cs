@@ -78,6 +78,8 @@ namespace WorkersAndResourcesModEditor
         private double m_StorageCapacityVehicles;
         private double m_StorageCapacityOil;
         private double m_StorageCapacityGeneral;
+        private double m_StorageCapacityNuclear1;
+        private double m_StorageCapacityNuclear2;
         private string m_StorageSpecialID1;
         private double m_StorageSpecial1Capacity;
         private string m_StorageSpecialID2;
@@ -421,6 +423,24 @@ namespace WorkersAndResourcesModEditor
             set
             {
                 m_StorageCapacityGeneral = value;
+                this.NotifyPropertyChanged();
+            }
+        }
+        public double StorageCapacityNuclear1
+        {
+            get { return m_StorageCapacityNuclear1; }
+            set
+            {
+                m_StorageCapacityNuclear1 = value;
+                this.NotifyPropertyChanged();
+            }
+        }
+        public double StorageCapacityNuclear2
+        {
+            get { return m_StorageCapacityNuclear2; }
+            set
+            {
+                m_StorageCapacityNuclear2 = value;
                 this.NotifyPropertyChanged();
             }
         }

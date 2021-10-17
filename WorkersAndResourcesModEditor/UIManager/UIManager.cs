@@ -29,7 +29,7 @@ namespace WorkersAndResourcesModEditor
             MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.ToWIPCommand, this.ExecuteToWIPCommand, this.CanExecuteToWIPCommand));
 
             m_ModFiles = new List<FileInfo>();
-
+            ReadConfig();
             MainWindow.Show();
 
         }
@@ -134,6 +134,11 @@ namespace WorkersAndResourcesModEditor
                 return;
             }
 
+            if(!UIModel.ModPath.Contains("784150"))
+            {
+                MessageBox.Show("This is not the correct mods path. The mods folder is named 784150");
+                return;
+            }
             this.MainWindow.Cursor = Cursors.Wait;
 
             DirectoryInfo di = new DirectoryInfo(UIModel.ModPath);
@@ -150,15 +155,47 @@ namespace WorkersAndResourcesModEditor
             }
 
             this.MainWindow.Cursor = Cursors.Arrow;
+            WriteConfigFile();
+        }
+
+        private void ReadConfig()
+        {
+            string path = Environment.CurrentDirectory;
+            if (File.Exists(Path.Combine(path, "Config.txt")))
+            {
+                using (StreamReader sr = new StreamReader(Path.Combine(path, "Config.txt")))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string line = sr.ReadLine();
+                        if (line.Contains("Mods folder: "))
+                            UIModel.ModPath = line.Substring(13);
+                        if (line.Contains("WIP folder: "))
+                            UIModel.WIPPath = line.Substring(12);
+                    }
+                }
+            }
+        }
+        private void WriteConfigFile()
+        {
+            string path = Environment.CurrentDirectory;
+            using (StreamWriter sw = new StreamWriter(Path.Combine(path, "Config.txt")))
+            {
+                sw.WriteLine("Mods folder: " + UIModel.ModPath);
+                sw.WriteLine("WIP folder: " + UIModel.WIPPath);
+            }
         }
 
         private void ExecuteRightClickOnModCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            //if (this.MainWindow.DG_Mods.SelectedCells.Count == 1)
+            if (this.MainWindow.DG_Mods.SelectedCells.Count >= 1)
             {
                 DataGridCellInfo dataGridCell = this.MainWindow.DG_Mods.SelectedCells[0];
                 var item = dataGridCell.Item as UIModelBuildingIni;
-                Process.Start(@"C:\Program Files (x86)\Notepad++\notepad++.exe", item.FilePath);
+                if (File.Exists(@"C:\Program Files (x86)\Notepad++\notepad++.exe"))
+                    Process.Start(@"C:\Program Files (x86)\Notepad++\notepad++.exe", item.FilePath);
+                else
+                    Process.Start("notepad.exe", item.FilePath);
             }
         }
     }

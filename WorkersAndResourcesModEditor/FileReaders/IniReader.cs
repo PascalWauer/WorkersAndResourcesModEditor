@@ -274,6 +274,20 @@ namespace WorkersAndResourcesModEditor
                 building.StorageCapacityGeneral = result;
                 return;
             }
+            if (line.Contains("RESOURCE_TRANSPORT_NUCLEAR1"))
+            {
+                string[] lineElements = line.Split(' ');
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                building.StorageCapacityNuclear1 = result;
+                return;
+            }
+            if (line.Contains("RESOURCE_TRANSPORT_NUCLEAR2"))
+            {
+                string[] lineElements = line.Split(' ');
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                building.StorageCapacityNuclear2 = result;
+                return;
+            }
             else
             {
                 throw new Exception("Unknown storage type in file " + building.FilePath);
