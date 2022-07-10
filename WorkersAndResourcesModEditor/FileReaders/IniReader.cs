@@ -37,7 +37,6 @@ namespace WorkersAndResourcesModEditor
                 }
                 building.WorkshopID = ModPathArray[modPathIndex + 1];
 
-                
 
                 building.ModID = ModFolder + "\\" + ModPathArray[modPathIndex + 1];
 
@@ -49,7 +48,12 @@ namespace WorkersAndResourcesModEditor
                         {
                             string[] lineArray = line.Split("\"");
                             building.ModID = lineArray[lineArray.Length - 2];
-                        }
+                        }                        
+                        //if (line.Contains("OBJECT_BUILDING "))
+                        //{
+                        //    string[] lineArray = line.Split(" ");
+                        //    building.ObjectName = lineArray[1];
+                        //}
                         if (line.Contains("WORKSHOP_ITEMTYPE_BUILDINGSKIN"))
                         {
                             building.Skin = true;
@@ -61,15 +65,14 @@ namespace WorkersAndResourcesModEditor
                 building.FilePath = file;
                 using (StreamReader sr = new StreamReader(file))
                 {
-
-                    if (file.Contains("2724473912"))
+                    if (file.Contains("2000613131"))
                         line = "";
 
                     // Read and display lines from the file until the end of
                     // the file is reached.
                     while ((line = sr.ReadLine()) != null)
                     {
-                        if (line.StartsWith(@"//"))
+                        if (line.StartsWith(@"//") || line.StartsWith(@"--") || line.StartsWith(@";"))
                             continue;
 
                         line = line.Replace("\t", " ").Trim(); ;
@@ -103,13 +106,11 @@ namespace WorkersAndResourcesModEditor
 
                             Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                             building.Quality = result;
-
                         }
                         if (line.Contains("$WORKERS_NEEDED"))
                         {
                             string[] lineElements = line.Split(' ');
                             building.Workers_Needed = int.Parse(lineElements[1]);
-
                         }
                         if (line.Contains("$ELETRIC_WITHOUT_LIGHTING_FACTOR"))
                         {
@@ -129,6 +130,26 @@ namespace WorkersAndResourcesModEditor
                             Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                             building.ElectronicLiving = result;
                         }
+                        if (line.Contains("$PRODUCTION_CONNECT_TO_WIND"))
+                        {
+                            string[] lineElements = line.Split(' ');
+                            building.ProductionWind = int.Parse(lineElements[1]);
+                            if (building.Type == "powerplant" || building.Type == "factory")
+                            {
+                                string[] filePathArray = building.FilePath.Split('\\');
+                                ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], line, "powerplant_wind");
+                            }
+                        }
+                        if (line.Contains("$PRODUCTION_CONNECT_TO_SUN"))
+                        {
+                            string[] lineElements = line.Split(' ');
+                            building.ProductionSun = int.Parse(lineElements[1]);
+                            if (building.Type == "powerplant" || building.Type == "factory")
+                            {
+                                string[] filePathArray = building.FilePath.Split('\\');
+                                ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], line, "powerplant_sun");
+                            }
+                        }
                         //category
                         if (line.Contains("$CIVIL_BUILDING"))
                         {
@@ -145,7 +166,17 @@ namespace WorkersAndResourcesModEditor
                         {
                             building.Type = line.Replace("$TYPE_", "").ToLower();
                         }
-                        
+                        //subtypes
+                        if (line.Contains("$SUBTYPE_"))
+                        {
+                            building.SubType = line.Replace("$SUBTYPE_", "").ToLower();
+                            if (building.Type == "broadcast")
+                            {
+                                string[] filePathArray = building.FilePath.Split('\\');
+                                ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], line, building.SubType);
+                            }
+                        }
+
                         //storage
                         if (line.Contains("$STORAGE RESOURCE_TRANSPORT_") || line.Contains("$STORAGE_IMPORT") || line.Contains("$STORAGE_EXPORT"))
                         {
@@ -187,6 +218,8 @@ namespace WorkersAndResourcesModEditor
                             string wareID = line.Split(' ')[1];
                             Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                             building.ProductionList.Add(new UIModelWareAmount(wareID, result));
+                            string[] filePathArray = building.FilePath.Split('\\');
+                            ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length -2], line, building.SubType);
                         }
                         //consumption
                         if (line.Contains("$CONSUMPTION "))

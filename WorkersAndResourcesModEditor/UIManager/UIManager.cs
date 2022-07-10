@@ -117,7 +117,12 @@ namespace WorkersAndResourcesModEditor
 
         private void ExecuteSearchCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            UIModel.SetFilters();
+            if (UIModel.Search == "createresearch")
+            {
+                ResearchFileWriter.WriteResearchFile();
+            }
+            else
+                UIModel.SetFilters();
         }
 
         private void CanExecuteReadModsCommand(object sender, CanExecuteRoutedEventArgs e)
@@ -141,6 +146,7 @@ namespace WorkersAndResourcesModEditor
             }
             this.MainWindow.Cursor = Cursors.Wait;
 
+            ResearchFileWriter.ClearResearchList();
             DirectoryInfo di = new DirectoryInfo(UIModel.ModPath);
 
             List<FileInfo> tmpModFiles = new List<FileInfo>();

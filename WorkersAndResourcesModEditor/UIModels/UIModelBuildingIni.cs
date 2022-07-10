@@ -60,10 +60,12 @@ namespace WorkersAndResourcesModEditor
         private int m_Workers_Capacity;
         private string m_WorkshopID;
         private string m_ModID;
+        private string m_ObjectName;
         private string m_BuildName;
         private string m_FilePath;
         private string m_Category;
         private string m_Type;
+        private string m_SubType;
         private double m_Quality;
         private int m_WorkersNeeded;
         private string m_Heating;
@@ -89,6 +91,8 @@ namespace WorkersAndResourcesModEditor
         private double m_ElectronicLiving;
         private double m_ElectronicWorking;
         private double m_ElectronicLightning;
+        private double m_ProductionWind;
+        private double m_ProductionSun;
         public int Workers_Capacity
         {
             get { return m_Workers_Capacity; }
@@ -125,6 +129,15 @@ namespace WorkersAndResourcesModEditor
             set
             {
                 m_ModID = value;
+                this.NotifyPropertyChanged();
+            }
+        }        
+        public string ObjectName
+        {
+            get { return m_ObjectName; }
+            set
+            {
+                m_ObjectName = value;
                 this.NotifyPropertyChanged();
             }
         }
@@ -170,6 +183,15 @@ namespace WorkersAndResourcesModEditor
             set
             {
                 m_Type = value;
+                this.NotifyPropertyChanged();
+            }
+        }        
+        public string SubType
+        {
+            get { return m_SubType; }
+            set
+            {
+                m_SubType = value;
                 this.NotifyPropertyChanged();
             }
         }
@@ -350,6 +372,24 @@ namespace WorkersAndResourcesModEditor
             set 
             { 
                 m_ElectronicLightning = value;
+                NotifyPropertyChanged();
+            }
+        }
+        public double ProductionWind
+        {
+            get { return m_ProductionWind; }
+            set
+            {
+                m_ProductionWind = value;
+                NotifyPropertyChanged();
+            }
+        }        
+        public double ProductionSun
+        {
+            get { return m_ProductionSun; }
+            set
+            {
+                m_ProductionSun = value;
                 NotifyPropertyChanged();
             }
         }
