@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace WorkersAndResourcesModEditor
 {
@@ -12,10 +13,11 @@ namespace WorkersAndResourcesModEditor
     {
         public static UIModelBuildingIni ReadBuildingIni(string file)
         {
+            string line = "";
+            UIModelBuildingIni building = new UIModelBuildingIni();
 
             try
             {
-                UIModelBuildingIni building = new UIModelBuildingIni();
                 building.ProductionList = new ObservableCollection<UIModelWareAmount>();
                 building.ConsumptionList = new ObservableCollection<UIModelWareAmount>();
 
@@ -41,7 +43,7 @@ namespace WorkersAndResourcesModEditor
 
                 using (StreamReader sr = new StreamReader(ModFolder + "\\" + ModPathArray[modPathIndex + 1] + "\\" + "workshopconfig.ini"))
                 {
-                    string line;
+                    
                     while((line = sr.ReadLine()) != null)
                     {
                         if (line.Contains("$ITEM_NAME "))
@@ -53,10 +55,14 @@ namespace WorkersAndResourcesModEditor
                     }
                 }
 
+                line = string.Empty;
                 building.FilePath = file;
                 using (StreamReader sr = new StreamReader(file))
                 {
-                    string line;
+
+                    if (file.Contains("2724473912"))
+                        line = "";
+
                     // Read and display lines from the file until the end of
                     // the file is reached.
                     while ((line = sr.ReadLine()) != null)
@@ -159,7 +165,19 @@ namespace WorkersAndResourcesModEditor
                         {
                             building.Heating = "Disabled";
                         }
-
+                        //loyalty
+                        if (line.Contains("$MONUMENT_GOVERNMENT_LOYALTY_RADIUS"))
+                        {
+                            string[] lineElements = line.Split(' ');
+                            Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                            building.LoyaltyRadius = result;
+                        }
+                        if (line.Contains("MONUMENT_GOVERNMENT_LOYALTY_STRENGTH"))
+                        {
+                            string[] lineElements = line.Split(' ');
+                            Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                            building.LoyaltyStrength = result;
+                        }
                         //production
                         if (line.Contains("$PRODUCTION "))
                         {
@@ -176,12 +194,11 @@ namespace WorkersAndResourcesModEditor
                             Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                             building.ConsumptionList.Add(new UIModelWareAmount(wareID, result));
                         }
-
                         //serve citizens
                         if (line.Contains("$CITIZEN_ABLE_SERVE"))
                         {
                             string[] lineElements = line.Split(' ');
-                            building.CitizensServe = int.Parse(lineElements[1]);
+                            building.CitizensServe = double.Parse(lineElements[1]);
                         }
                     }
                 }
@@ -190,9 +207,13 @@ namespace WorkersAndResourcesModEditor
                 building.CalculatPrices();
                 return building;
             }
-            catch (global::System.Exception)
+            catch (global::System.Exception ex)
             {
-                throw;
+                MessageBox.Show("Error in line: " + line + Environment.NewLine + ex.Message);
+#if DEBUG
+                throw new Exception("Error in line: " + line + Environment.NewLine + ex.Message);
+#endif
+                return building;
             }
         }
         private static void SetStorage(string line, UIModelBuildingIni building)
@@ -286,6 +307,20 @@ namespace WorkersAndResourcesModEditor
                 string[] lineElements = line.Split(' ');
                 Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                 building.StorageCapacityNuclear2 = result;
+                return;
+            }            
+            if (line.Contains("RESOURCE_TRANSPORT_WATER"))
+            {
+                string[] lineElements = line.Split(' ');
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                building.StorageCapacityWater = result;
+                return;
+            }
+            if (line.Contains("RESOURCE_TRANSPORT_SEWAGE"))
+            {
+                string[] lineElements = line.Split(' ');
+                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                building.StorageCapacitySewage = result;
                 return;
             }
             else

@@ -17,7 +17,7 @@
                 <ColumnDefinition Width="10"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid Width="930" HorizontalAlignment="Left">
+            <Grid Width="1000" HorizontalAlignment="Left">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -25,6 +25,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -42,7 +43,7 @@
                 </TextBlock>
 
                 <TextBox Margin="0,5" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding ModPath}"
-                         VerticalAlignment="Center" Width="200"
+                         VerticalAlignment="Center" Width="160"
                          ToolTip="Insert the path to the mods folder '784150' of Workers and Resources">
                 </TextBox>
 
@@ -52,7 +53,7 @@
                 <TextBlock Margin="5,5,0,5" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Text="Work in progress" Width="100" Foreground="Black">
                 </TextBlock>
 
-                <TextBox Margin="0,5" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Text="{Binding WIPPath}" Width="200">
+                <TextBox Margin="0,5" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Text="{Binding WIPPath}" Width="160">
                 </TextBox>
 
                 <Button Margin="5" Grid.Column="2" Grid.Row="1" Width="70" Height="20" Content="Copy Mods" Command="{x:Static local:WRCommands.ToWIPCommand}" Background="LightBlue" >
@@ -71,10 +72,11 @@
 
                 <Border Margin="0" Grid.Column="6" Grid.Row="1" Grid.RowSpan="2" Width="100" Background="Red" Opacity="0.6">
                 </Border>
-
-                <Border Margin="0" Grid.Column="7" Grid.Row="0" Grid.RowSpan="2" Width="130" Background="LightGray" Opacity="0.8">
+                <Border Margin="0" Grid.Column="7" Grid.Row="0" Grid.RowSpan="1" Width="130" Background="LightBlue" Opacity="0.8">
                 </Border>
-                <Border Margin="0" Grid.Column="7" Grid.Row="2" Grid.RowSpan="1" Width="130" Background="White">
+                <Border Margin="0" Grid.Column="7" Grid.Row="1" Grid.RowSpan="2" Width="130" Background="LightGray" Opacity="0.8">
+                </Border>
+                <Border Margin="0" Grid.Column="8" Grid.Row="0" Grid.RowSpan="1" Width="130" Background="White">
                 </Border>
                 <!-- residentials green -->
                 <CheckBox Margin="5" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Residential" IsChecked="{Binding Residential}">
@@ -108,18 +110,26 @@
                 <CheckBox Margin="5" Grid.Column="6" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Heating" IsChecked="{Binding Heating}">
                 </CheckBox>
 
-                <!-- transportation gray -->
-                <CheckBox Margin="5" Grid.Column="7" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="DO/CO/TO/Forklift" IsChecked="{Binding Office}">
+                <!-- water/sewage blue -->
+                <CheckBox Margin="5" Grid.Column="7" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Water/Sewage" IsChecked="{Binding Water}">
                 </CheckBox>
-                <CheckBox Margin="5" Grid.Column="7" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Stations" IsChecked="{Binding Station}">
+                
+                <!-- transportation gray -->
+                <CheckBox Margin="5" Grid.Column="7" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="DO/CO/TO/Forklift" IsChecked="{Binding Office}">
+                </CheckBox>
+                <CheckBox Margin="5" Grid.Column="7" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Stations" IsChecked="{Binding Station}">
                 </CheckBox>
 
+                <!-- monumentss white -->
+                <CheckBox Margin="5" Grid.Column="8" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Monuments" IsChecked="{Binding Monument}">
+                </CheckBox>
+                
                 <!-- others white -->
-                <CheckBox Margin="5" Grid.Column="7" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Others" IsChecked="{Binding Others}">
+                <CheckBox Margin="5" Grid.Column="8" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Others" IsChecked="{Binding Others}">
                 </CheckBox>
             </Grid>
         
-            <Grid Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300">
+            <Grid Margin="-115,0,0,0" Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"></RowDefinition>
                     <RowDefinition Height="30"></RowDefinition>
@@ -323,9 +333,29 @@ However, no other costs are included like electricity or worker costs." />
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
+                <DataGridTemplateColumn Header="Loyalty" Width="100" SortMemberPath="LoyaltyRadius" Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityLoyaltyElement}}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Radius"/>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Text="Strength"/>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Margin="5,0,0,0" Text="{Binding LoyaltyRadius}" />
+                                <TextBlock Grid.Column="1" Grid.Row="1" Margin="5,0,0,0" Text="{Binding LoyaltyStrength}" />
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-
-                <DataGridTextColumn Header="Storage Gen" 
+                <DataGridTextColumn Header="Storage Gen"
                                     Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}"
                                     Binding="{Binding StorageCapacityGeneral}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
@@ -399,6 +429,27 @@ However, no other costs are included like electricity or worker costs." />
                                     Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}"
                                     Binding="{Binding StorageCapacityOil}" Width="80" FontWeight="Normal" Foreground="DarkRed" IsReadOnly="True">
                 </DataGridTextColumn>
+
+                <DataGridTemplateColumn Header="Water" Width="100" SortMemberPath="StorageCapacityWater">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="Water"/>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Text="Sewage"/>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Margin="5,0,0,0" Text="{Binding StorageCapacityWater}" />
+                                <TextBlock Grid.Column="1" Grid.Row="1" Margin="5,0,0,0" Text="{Binding StorageCapacitySewage}" />
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
                 <DataGridTemplateColumn Header="Storage Nuclear" Width="100" SortMemberPath="StorageCapacityNuclear1" Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}">
                     <DataGridTemplateColumn.CellTemplate>
@@ -480,5 +531,6 @@ However, no other costs are included like electricity or worker costs." />
         <FrameworkElement x:Name="dummyVisibilityAttractionsElement" Visibility="{Binding VisibilityAttractions}"/>
         <FrameworkElement x:Name="dummyVisibilityWorkersNeededElement" Visibility="{Binding VisibilityWorkersNeeded}"/>
         <FrameworkElement x:Name="dummyVisibilityStoragesElement" Visibility="{Binding VisibilityStorages}"/>
+        <FrameworkElement x:Name="dummyVisibilityLoyaltyElement" Visibility="{Binding VisibilityLoyalty}"/>
     </Grid>
 </Window>

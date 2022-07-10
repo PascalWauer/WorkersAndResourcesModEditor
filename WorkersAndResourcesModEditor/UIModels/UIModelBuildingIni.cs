@@ -80,6 +80,8 @@ namespace WorkersAndResourcesModEditor
         private double m_StorageCapacityGeneral;
         private double m_StorageCapacityNuclear1;
         private double m_StorageCapacityNuclear2;
+        private double m_StorageCapacityWater;
+        private double m_StorageCapacitySewage;
         private string m_StorageSpecialID1;
         private double m_StorageSpecial1Capacity;
         private string m_StorageSpecialID2;
@@ -190,9 +192,9 @@ namespace WorkersAndResourcesModEditor
             }
         }
 
-        private int m_CitizensServe;
+        private double m_CitizensServe;
 
-        public int CitizensServe
+        public double CitizensServe
         {
             get { return m_CitizensServe; }
             set
@@ -286,6 +288,28 @@ namespace WorkersAndResourcesModEditor
             set
             {
                 m_AttractiveScore = value;
+                NotifyPropertyChanged();
+            }
+        }
+        private double m_LoyaltyRadius;
+
+        public double LoyaltyRadius
+        {
+            get { return m_LoyaltyRadius; }
+            set
+            {
+                m_LoyaltyRadius = value;
+                NotifyPropertyChanged();
+            }
+        }
+        private double m_LoyaltyStrength;
+
+        public double LoyaltyStrength
+        {
+            get { return m_LoyaltyStrength; }
+            set
+            {
+                m_LoyaltyStrength = value;
                 NotifyPropertyChanged();
             }
         }
@@ -441,6 +465,24 @@ namespace WorkersAndResourcesModEditor
             set
             {
                 m_StorageCapacityNuclear2 = value;
+                this.NotifyPropertyChanged();
+            }
+        }        
+        public double StorageCapacityWater
+        {
+            get { return m_StorageCapacityWater; }
+            set
+            {
+                m_StorageCapacityWater = value;
+                this.NotifyPropertyChanged();
+            }
+        }        
+        public double StorageCapacitySewage
+        {
+            get { return m_StorageCapacitySewage; }
+            set
+            {
+                m_StorageCapacitySewage = value;
                 this.NotifyPropertyChanged();
             }
         }

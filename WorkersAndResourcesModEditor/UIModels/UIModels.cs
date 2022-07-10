@@ -83,6 +83,28 @@ namespace WorkersAndResourcesModEditor
                 NotifyPropertyChanged();
                 SetVisibility();
             }
+        }        
+        private bool m_Water;
+        public bool Water
+        {
+            get { return m_Water; }
+            set
+            {
+                m_Water = value;
+                NotifyPropertyChanged();
+                SetVisibility();
+            }
+        }        
+        private bool m_Monument;
+        public bool Monument
+        {
+            get { return m_Monument; }
+            set
+            {
+                m_Monument = value;
+                NotifyPropertyChanged();
+                SetVisibility();
+            }
         }
 
         private bool m_Connectors;
@@ -236,7 +258,7 @@ namespace WorkersAndResourcesModEditor
         public bool NoFilters
         {
             get {
-                if (!Residential && !Education && !FireHealth && !Shop && !Entertain && !Attraction && !CityHall && !Connectors && !Storage && !Factories && !Power && !Heating && !Station && !Office)
+                if (!Residential && !Education && !FireHealth && !Shop && !Entertain && !Attraction && !CityHall && !Connectors && !Storage && !Factories && !Power && !Heating && !Water && !Monument && !Station && !Office)
                     return true;
                 else
                     return false;
@@ -317,6 +339,19 @@ namespace WorkersAndResourcesModEditor
                 NotifyPropertyChanged();
             }
         }
+        private Visibility m_VisibilityLoyalty;
+        public Visibility VisibilityLoyalty
+        {
+            get
+            {
+                return m_VisibilityLoyalty;
+            }
+            set
+            {
+                m_VisibilityLoyalty = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         private void SetVisibility()
         {
@@ -326,6 +361,7 @@ namespace WorkersAndResourcesModEditor
             SetVisibilityAttractions();
             SetVisibilityWorkersNeeded();
             SetVisibilityStorages();
+            SetVisibilityLoyalty();
         }
         private void SetVisibilityFactories()
         {
@@ -350,17 +386,24 @@ namespace WorkersAndResourcesModEditor
         }
         private void SetVisibilityWorkersNeeded()
         {
-            if (Education == true || FireHealth == true || Shop == true || Attraction == true || Entertain == true || CityHall == true || Factories == true || Power == true || Heating == true || NoFilters)
+            if (Education == true || FireHealth == true || Shop == true || Attraction == true || Entertain == true || CityHall == true || Factories == true || Power == true || Heating == true || Water == true || NoFilters)
                 VisibilityWorkersNeeded = Visibility.Visible;
             else
                 VisibilityWorkersNeeded = Visibility.Collapsed;
         }
         private void SetVisibilityStorages()
         {
-            if (Shop == true || Entertain == true || Connectors == true || Storage == true || Factories == true || Power == true || Heating == true || Station == true || NoFilters)
+            if (Shop == true || Entertain == true || Connectors == true || Storage == true || Factories == true || Power == true || Heating == true || Station == true || Water == true || NoFilters)
                 VisibilityStorages = Visibility.Visible;
             else
                 VisibilityStorages = Visibility.Collapsed;
+        }
+        private void SetVisibilityLoyalty()
+        {
+            if (Monument == true || NoFilters)
+                VisibilityLoyalty = Visibility.Visible;
+            else
+                VisibilityLoyalty = Visibility.Collapsed;
         }
         #endregion
 
@@ -413,12 +456,14 @@ namespace WorkersAndResourcesModEditor
                 || this.Connectors && (building.Type == "heating_switch" || building.Type == "engine")
                 || this.Station && (building.Type == "passanger_station" || building.Type == "cargo_station" || building.Type == "airplane_parking")
                 || this.Entertain && (building.Type == "church" || building.Type == "kino" || building.Type == "sport")
-                || this.Others && (building.Type == "monument" || building.Type == "gas_station" || building.Type == "pollution_meter" || building.Type == "car_dealer" || building.Type == "broadcast")
                 || this.Attraction && (building.Type == "attraction" || building.Type =="hotel")
                 || this.Office && (building.Type == "distribution_office" || building.Type == "garbage_office" || building.Type == "forklift_garage" || building.Type == "construction_office")
                 || this.CityHall && building.Type == "cityhall"
                 || this.Heating && building.Type == "heating_plant"
-                || (!this.Factories && !this.Education && !this.Connectors && !this.FireHealth && !this.Power && !this.Residential && !this.Shop && !this.Storage && !this.Heating && !this.Entertain && !this.CityHall && !this.Attraction && !this.Office && !this.Station && !this.Others)
+                || this.Water && (building.Type.Contains("sewage") || building.Type.Contains("water"))
+                || this.Monument && building.Type == "monument"
+                || this.Others && (building.Type == "gas_station" || building.Type == "pollution_meter" || building.Type == "car_dealer" || building.Type == "broadcast" || building.Type == "secret_police" || building.Type == "police" || building.Type == "prison" || building.Type == "court_house")
+                || (!this.Factories && !this.Education && !this.Connectors && !this.FireHealth && !this.Power && !this.Residential && !this.Shop && !this.Storage && !this.Heating && !this.Entertain && !this.CityHall && !this.Attraction && !this.Office && !this.Station && !this.Water && !this.Monument && !this.Others)
                 )
             /* missing types: 
                 church, kino, sport -> entertainment/church
