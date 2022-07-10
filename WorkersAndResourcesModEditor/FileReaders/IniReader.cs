@@ -43,14 +43,16 @@ namespace WorkersAndResourcesModEditor
 
                 using (StreamReader sr = new StreamReader(ModFolder + "\\" + ModPathArray[modPathIndex + 1] + "\\" + "workshopconfig.ini"))
                 {
-                    
                     while((line = sr.ReadLine()) != null)
                     {
                         if (line.Contains("$ITEM_NAME "))
                         {
                             string[] lineArray = line.Split("\"");
                             building.ModID = lineArray[lineArray.Length - 2];
-                            break;
+                        }
+                        if (line.Contains("WORKSHOP_ITEMTYPE_BUILDINGSKIN"))
+                        {
+                            building.Skin = true;
                         }
                     }
                 }

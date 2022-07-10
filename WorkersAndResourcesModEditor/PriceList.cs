@@ -24,7 +24,7 @@ namespace WorkersAndResourcesModEditor
                 {"iron", 19.68}, 
                 {"rawiron", 6.68}, 
                 {"ecomponents", 1064.24}, 
-                {"electronics", 1112.52}, 
+                {"eletronics", 1112.52}, 
                 {"food", 115.72},
                 {"meat", 297.24}, 
                 {"used nuclear fuel", -1085.85}, 

@@ -252,6 +252,17 @@ namespace WorkersAndResourcesModEditor
             }
         }
 
+        private bool m_Skin;
+        public bool Skin
+        {
+            get { return m_Skin; }
+            set
+            {
+                m_Skin = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         private double m_PriceConsumption;
         private double m_PriceProduction;
         public double PriceConsumption
