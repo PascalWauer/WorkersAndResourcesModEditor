@@ -134,21 +134,21 @@ namespace WorkersAndResourcesModEditor
                         {
                             string[] lineElements = line.Split(' ');
                             building.ProductionWind = int.Parse(lineElements[1]);
-                            if (building.Type == "powerplant" || building.Type == "factory")
-                            {
-                                string[] filePathArray = building.FilePath.Split('\\');
-                                ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], line, "powerplant_wind");
-                            }
+                            //if (building.Type == "powerplant" || building.Type == "factory")
+                            //{
+                            //    string[] filePathArray = building.FilePath.Split('\\');
+                            //    ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], line, "powerplant_wind");
+                            //}
                         }
                         if (line.Contains("$PRODUCTION_CONNECT_TO_SUN"))
                         {
                             string[] lineElements = line.Split(' ');
                             building.ProductionSun = int.Parse(lineElements[1]);
-                            if (building.Type == "powerplant" || building.Type == "factory")
-                            {
-                                string[] filePathArray = building.FilePath.Split('\\');
-                                ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], line, "powerplant_sun");
-                            }
+                            //if (building.Type == "powerplant" || building.Type == "factory")
+                            //{
+                            //    string[] filePathArray = building.FilePath.Split('\\');
+                            //    ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], line, "powerplant_sun");
+                            //}
                         }
                         //category
                         if (line.Contains("$CIVIL_BUILDING"))
@@ -170,11 +170,11 @@ namespace WorkersAndResourcesModEditor
                         if (line.Contains("$SUBTYPE_"))
                         {
                             building.SubType = line.Replace("$SUBTYPE_", "").ToLower();
-                            if (building.Type == "broadcast")
-                            {
-                                string[] filePathArray = building.FilePath.Split('\\');
-                                ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], line, building.SubType);
-                            }
+                            //if (building.Type == "broadcast")
+                            //{
+                            //    string[] filePathArray = building.FilePath.Split('\\');
+                            //    ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], line, building.SubType);
+                            //}
                         }
 
                         //storage
@@ -218,8 +218,8 @@ namespace WorkersAndResourcesModEditor
                             string wareID = line.Split(' ')[1];
                             Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
                             building.ProductionList.Add(new UIModelWareAmount(wareID, result));
-                            string[] filePathArray = building.FilePath.Split('\\');
-                            ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length -2], line, building.SubType);
+                            //string[] filePathArray = building.FilePath.Split('\\');
+                            //ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length -2], line, building.SubType);
                         }
                         //consumption
                         if (line.Contains("$CONSUMPTION "))
@@ -239,6 +239,28 @@ namespace WorkersAndResourcesModEditor
                 }
                 if (building.Type == null)
                     building.Type = "unknown";
+
+                string[] filePathArray = building.FilePath.Split('\\');
+
+                if (building.ProductionSun > 0)
+                    ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "connect_to_sun", building.SubType);
+                else if (building.ProductionWind > 0)
+                    ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "connect_to_wind", building.SubType);
+                else if (building.ProductionList != null && building.ProductionList.Count == 1)
+                    ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], building.ProductionList[0].Ware, building.SubType);
+                else if (building.ProductionList != null && building.ProductionList.Count > 1)
+                {
+                    if (building.ProductionList.Any(x => x.Ware == "fuel" || x.Ware == "bitumen"))
+                        ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "fuel", building.SubType);
+                    else if (building.ProductionList.Any(x => x.Ware == "uf6"))
+                        ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "uf6", building.SubType);
+                }
+                else if (building.SubType != null)
+                    ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "", building.SubType);
+                else if (building.Type != null && building.Type == "secret_police")
+                    ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "secret_police", building.SubType);
+
+
                 building.CalculatPrices();
                 return building;
             }

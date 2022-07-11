@@ -17,8 +17,14 @@ namespace WorkersAndResourcesModEditor
         // chemical/medical researches
         public static string Chemistry_1 = "chemistry_1";
         public static string Chemistry_2 = "chemistry_2";
+        public static string OilProcessing = "oilprocessing";
         public static string Solar_2 = "solar_energy";
+
         public static string NuclearSafety = "nuclearsafety";
+        public static string Nuclear_1 = "nuclear_1";
+        public static string Nuclear_2 = "nuclear_2";
+        public static string Nuclear_3 = "nuclear_3";
+        public static string Nuclear_4 = "nuclear_4";
 
         public static string Aluminum_1 = "aluminum_1";
         public static string Aluminum_2 = "aluminum_2";
@@ -29,12 +35,8 @@ namespace WorkersAndResourcesModEditor
         public static string Electronics_1 = "electronics_1";
         public static string Electronics_2 = "electronics_2";
         public static string Electronics_3 = "electronics_3";
+        public static string OilMining = "oilmining";
         
-        public static string Nuclear_1 = "nuclear_1";
-        public static string Nuclear_2 = "nuclear_2";
-        public static string Nuclear_3 = "nuclear_3";
-        public static string Nuclear_4 = "nuclear_4";
-
         public static string Vehicles = "production_vehicle";
         public static string Ships = "production_ship";
         public static string Trains = "production_train";
@@ -42,7 +44,7 @@ namespace WorkersAndResourcesModEditor
         public static string Wind = "wind_energy";
 
         // civilian/soviet researches
-        public static string SecretPolice = "SecretPolice";
+        public static string SecretPolice = "secretpolice";
         public static string radio_1 = "radio_1";
         public static string tv_2 = "tv_1";
     }
@@ -96,12 +98,16 @@ namespace WorkersAndResourcesModEditor
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.Nuclear_2, Type = ResearchType.TYPE_MEDICAL });
             else if (line.Contains("nuclearfuel"))
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.Nuclear_3, Type = ResearchType.TYPE_MEDICAL });
-            else if (line.Contains("CONNECT_TO_SUN"))
+            else if (line.Contains("connect_to_sun"))
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.Solar_2, Type = ResearchType.TYPE_MEDICAL });
+            else if (line.Contains("fuel") || line.Contains("bitumen"))
+                ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.OilProcessing, Type = ResearchType.TYPE_MEDICAL });
 
             // Technical Research
             else if (line.Contains("mcomponents"))
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.Engineering_1, Type = ResearchType.TYPE_TECHNICAL });
+            else if (line.Contains("oil"))
+                ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.OilMining, Type = ResearchType.TYPE_TECHNICAL });
 
             else if (line.Contains("ecomponents"))
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.Electronics_1, Type = ResearchType.TYPE_TECHNICAL });
@@ -121,12 +127,12 @@ namespace WorkersAndResourcesModEditor
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.Airplanes, Type = ResearchType.TYPE_TECHNICAL });
             else if (line.Contains("nuclearfuelburned"))
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.Nuclear_4, Type = ResearchType.TYPE_TECHNICAL });
-            else if (line.Contains("CONNECT_TO_WIND"))
+            else if (line.Contains("connect_to_wind"))
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.Wind, Type = ResearchType.TYPE_TECHNICAL });
 
             // Soviet Research
 
-            else if (line.Contains("SECRET_POLICE"))
+            else if (line.Contains("secret_police"))
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.SecretPolice, Type = ResearchType.TYPE_SOVIET });
             else if (subtype == "radio")
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.radio_1, Type = ResearchType.TYPE_SOVIET });
@@ -149,14 +155,13 @@ namespace WorkersAndResourcesModEditor
                 {
                     sw.WriteLine("$RESEARCH " + group.ResearchId);
                     sw.WriteLine("$" + group.Type);
-                    sw.WriteLine("$NAME \"" + group.Name + "\"");
-                    sw.WriteLine("$DESC \"" + group.Description + "\"");
+                    sw.WriteLine("$NAME_STR \"" + group.Name + "\"");
+                    //sw.WriteLine("$DESC \"" + group.Description + "\"");
                     sw.WriteLine("");
 
                     // new group setting type, name, description, cost, availability and next research
                     if (group.IsAvailableAtStart)
                     {
-                        
                         sw.WriteLine("$AVAILABLE");
                     }
                     sw.WriteLine("$COST " + group.Cost);
@@ -200,7 +205,33 @@ namespace WorkersAndResourcesModEditor
                 Name = "Basic Chemistry Technology",
                 Cost = 2000,
                 Description = "",
-                NextResearches = new List<string>() { ResearchIds.Chemistry_2, ResearchIds.Solar_2, ResearchIds.NuclearSafety }
+                NextResearches = new List<string>() { ResearchIds.OilProcessing, ResearchIds.Solar_2, ResearchIds.NuclearSafety }
+            });
+            groups.Add(new ResearchGroup()
+            {
+                ResearchId = ResearchIds.Solar_2,
+                Type = ResearchType.TYPE_MEDICAL,
+                Name = "Solar Power Technology",
+                Cost = 2500,
+                Description = ""
+            });
+            groups.Add(new ResearchGroup()
+            {
+                ResearchId = ResearchIds.OilProcessing,
+                Type = ResearchType.TYPE_MEDICAL,
+                Name = "Oil Processing Technology",
+                Cost = 4000,
+                Description = "",
+                NextResearches = new List<string>() { ResearchIds.Chemistry_2 }
+            });
+            groups.Add(new ResearchGroup()
+            {
+                ResearchId = ResearchIds.NuclearSafety,
+                Type = ResearchType.TYPE_MEDICAL,
+                Name = "Nuclear Safety",
+                Cost = 3000,
+                Description = "Unlocks uranium mining research",
+                NextResearches = new List<string>() { ResearchIds.Nuclear_1 }
             });
             groups.Add(new ResearchGroup()
             {
@@ -216,7 +247,7 @@ namespace WorkersAndResourcesModEditor
                 Type = ResearchType.TYPE_MEDICAL,
                 IsAvailableAtStart = true,
                 Name = "Bauxit Mining Technology",
-                Cost = 2000,
+                Cost = 4000,
                 Description = "",
                 NextResearches = new List<string>() { ResearchIds.Aluminum_2 }
             });
@@ -228,23 +259,7 @@ namespace WorkersAndResourcesModEditor
                 Cost = 4000,
                 Description = ""
             });
-            groups.Add(new ResearchGroup()
-            {
-                ResearchId = ResearchIds.Solar_2,
-                Type = ResearchType.TYPE_MEDICAL,
-                Name = "Solar Power Technology",
-                Cost = 2500,
-                Description = ""
-            });
-            groups.Add(new ResearchGroup()
-            {
-                ResearchId = ResearchIds.NuclearSafety,
-                Type = ResearchType.TYPE_MEDICAL,
-                Name = "Nuclear Safety",
-                Cost = 3000,
-                Description = "Unlocks uranium mining research",
-                NextResearches = new List<string>() { ResearchIds.Nuclear_1 }
-            });
+            
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Nuclear_1,
@@ -291,7 +306,15 @@ namespace WorkersAndResourcesModEditor
                 Name = "Basic Mechanical Technology",
                 Cost = 2000,
                 Description = "",
-                NextResearches = new List<string>() { ResearchIds.Vehicles, ResearchIds.Ships, ResearchIds.Trains }
+                NextResearches = new List<string>() { ResearchIds.OilMining, ResearchIds.Vehicles, ResearchIds.Ships, ResearchIds.Trains }
+            });
+            groups.Add(new ResearchGroup()
+            {
+                ResearchId = ResearchIds.OilMining,
+                Type = ResearchType.TYPE_TECHNICAL,
+                Name = "Fluid Mining Technology",
+                Cost = 3000,
+                Description = ""
             });
             groups.Add(new ResearchGroup()
             {
@@ -403,12 +426,12 @@ namespace WorkersAndResourcesModEditor
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Electronics_2, BuildingId = "eletronic_factory", Type = ResearchType.TYPE_TECHNICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_1, BuildingId = "mechanical_components_factory", Type = ResearchType.TYPE_TECHNICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Wind, BuildingId = "powerplant_wind1", Type = ResearchType.TYPE_TECHNICAL });
-            ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Wind, BuildingId = "powerplant_wind2", Type = ResearchType.TYPE_TECHNICAL });
+            ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.OilMining, BuildingId = "oil_mine", Type = ResearchType.TYPE_TECHNICAL });
 
-            ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.NuclearSafety, BuildingId = "production_vehicle", Type = ResearchType.TYPE_MEDICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Chemistry_1, BuildingId = "chemical_plant", Type = ResearchType.TYPE_MEDICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Chemistry_2, BuildingId = "plastics_factory", Type = ResearchType.TYPE_MEDICAL });
-            ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Solar_2, BuildingId = "powerplant_solar", Type = ResearchType.TYPE_MEDICAL });
+            ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.OilProcessing, BuildingId = "oil_rafinery", Type = ResearchType.TYPE_MEDICAL });
+            ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.OilProcessing, BuildingId = "oil_rafinery_v2", Type = ResearchType.TYPE_MEDICAL });
 
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Aluminum_1, BuildingId = "bauxite_mine", Type = ResearchType.TYPE_MEDICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Aluminum_1, BuildingId = "bauxite_processing", Type = ResearchType.TYPE_MEDICAL });
