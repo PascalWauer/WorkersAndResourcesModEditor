@@ -477,7 +477,7 @@ namespace WorkersAndResourcesModEditor
                 passanger_station -> passenger station
             */
             {
-                if (this.Search == null || (this.Search != null && building.BuildingName != null && (building.ModID.ToLower().Contains(this.Search.ToLower()) || building.BuildingName.ToLower().Contains(this.Search.ToLower()) || building.ProductionList.Any(x => x.Ware.Contains(this.Search.ToLower())) || building.Type.ToLower().Contains(Search.ToLower()))))
+                if (this.Search == null || (this.Search != null && building.BuildingName != null && (building.ModID.ToLower().Contains(this.Search.ToLower()) || building.WorkshopID.Contains(this.Search) || building.BuildingName.ToLower().Contains(this.Search.ToLower()) || building.ProductionList.Any(x => x.Ware.Contains(this.Search.ToLower())) || building.Type.ToLower().Contains(Search.ToLower()))))
                     return true;
                 else
                     return false;
