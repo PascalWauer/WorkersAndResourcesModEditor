@@ -9,6 +9,7 @@ namespace WorkersAndResourcesModEditor
         public static Dictionary<string, double> PriceListSell;
         static PriceLists()
         {
+            // prices taken from in game 01.01.1960 on default settings (medium)
             PriceListSell = new Dictionary<string, double>()
             { 
                 {"alcohol", 242.56}, 
@@ -49,8 +50,28 @@ namespace WorkersAndResourcesModEditor
                 {"cement", 36.12}, 
                 {"bricks", 27.12}, 
                 {"oil", 40.82}, 
-                {"eletric", 0.96}
+                {"eletric", 0.96},
+                {"water", 8.74},
+                {"sewage", -8.55}
             };
+
+            /*
+             * 20 food = 42 plants + 8.5 water / 170 workers
+             * 6 alcohol = 30 plants + 13 water + 10 electric / 100 workers
+             * 10 lifestock = 20 plant + 12 water / 50 workers
+             * 60 meat = 150 lifestock / 50 workers
+             * 140 boards = 180 wood + 1.6 electric / 20 workers
+             * 5 textile  = 20 plant + 0.5 chemcials + 11 water + 10 electric / 100 workers
+             * 1.2 clothes = 2.4 textiles / 80
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             *
+             */
         }
     }
 }
