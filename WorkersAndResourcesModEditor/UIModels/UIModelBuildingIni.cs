@@ -163,7 +163,12 @@ namespace WorkersAndResourcesModEditor
         public string PreviewImage
         {
             get 
-            { 
+            {
+                string previewPath = "";
+                if (File.Exists(new FileInfo(FilePath).Directory + @"\imagegui.png"))
+                {
+                    return new FileInfo(FilePath).Directory + @"\imagegui.png";
+                }
                 return this.GetModFolderPath(new DirectoryInfo(this.FilePath), this.WorkshopID).FullName + @"\previewimage.png"; 
             }
         }

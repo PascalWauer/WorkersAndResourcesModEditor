@@ -446,7 +446,7 @@ namespace WorkersAndResourcesModEditor
         {
             UIModelBuildingIni building = item as UIModelBuildingIni;
 
-            if (this.Factories && (building.Type == "factory" || building.Type == "production_line") 
+            if (this.Factories && (building.Type == "factory" || building.Type == "production_line" || building.Type == "field") 
                 || this.Storage && building.Type == "storage" 
                 || this.FireHealth && (building.Type == "firestation" || building.Type == "hospital") 
                 || this.Residential && building.Type == "living" 
