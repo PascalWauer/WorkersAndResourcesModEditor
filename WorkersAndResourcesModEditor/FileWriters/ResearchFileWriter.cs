@@ -18,7 +18,8 @@ namespace WorkersAndResourcesModEditor
         public static string Chemistry_1 = "chemistry_1";
         public static string Chemistry_2 = "chemistry_2";
         public static string OilProcessing = "oilprocessing";
-        public static string Solar_2 = "solar_energy";
+        public static string SolarEnergy = "solar_energy";
+        public static string Fertilizer = "fertilizer";
 
         public static string NuclearSafety = "nuclearsafety";
         public static string Nuclear_1 = "nuclear_1";
@@ -99,9 +100,11 @@ namespace WorkersAndResourcesModEditor
             else if (line.Contains("nuclearfuel"))
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.Nuclear_3, Type = ResearchType.TYPE_MEDICAL });
             else if (line.Contains("connect_to_sun"))
-                ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.Solar_2, Type = ResearchType.TYPE_MEDICAL });
+                ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.SolarEnergy, Type = ResearchType.TYPE_MEDICAL });
             else if (line.Contains("fuel") || line.Contains("bitumen"))
-                ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.OilProcessing, Type = ResearchType.TYPE_MEDICAL });
+                ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.OilProcessing, Type = ResearchType.TYPE_MEDICAL });            
+            else if (line.Contains("greenhouse"))
+                ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.Fertilizer, Type = ResearchType.TYPE_MEDICAL });
 
             // Technical Research
             else if (line.Contains("mcomponents"))
@@ -205,13 +208,21 @@ namespace WorkersAndResourcesModEditor
                 Name = "Basic Chemistry Technology",
                 Cost = 2000,
                 Description = "",
-                NextResearches = new List<string>() { ResearchIds.OilProcessing, ResearchIds.Solar_2, ResearchIds.NuclearSafety }
+                NextResearches = new List<string>() { ResearchIds.OilProcessing, ResearchIds.SolarEnergy, ResearchIds.Fertilizer, ResearchIds.NuclearSafety }
             });
             groups.Add(new ResearchGroup()
             {
-                ResearchId = ResearchIds.Solar_2,
+                ResearchId = ResearchIds.SolarEnergy,
                 Type = ResearchType.TYPE_MEDICAL,
                 Name = "Solar Power Technology",
+                Cost = 2500,
+                Description = ""
+            });            
+            groups.Add(new ResearchGroup()
+            {
+                ResearchId = ResearchIds.Fertilizer,
+                Type = ResearchType.TYPE_MEDICAL,
+                Name = "Fertilizer",
                 Cost = 2500,
                 Description = ""
             });

@@ -246,6 +246,8 @@ namespace WorkersAndResourcesModEditor
                     ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "connect_to_sun", building.SubType);
                 else if (building.ProductionWind > 0)
                     ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "connect_to_wind", building.SubType);
+                else if (building.ProductionList != null && building.ProductionList.Count == 1 && building.ProductionList[0].Ware == "plants" && building.ConsumptionList != null && building.ConsumptionList.Any(x => x.Ware == "chemicals"))
+                    ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "greenhouse", building.SubType);
                 else if (building.ProductionList != null && building.ProductionList.Count == 1)
                     ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], building.ProductionList[0].Ware, building.SubType);
                 else if (building.ProductionList != null && building.ProductionList.Count > 1)
@@ -259,7 +261,6 @@ namespace WorkersAndResourcesModEditor
                     ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "", building.SubType);
                 else if (building.Type != null && building.Type == "secret_police")
                     ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "secret_police", building.SubType);
-
 
                 building.CalculatPrices();
                 return building;
