@@ -146,7 +146,7 @@ namespace WorkersAndResourcesModEditor
             }
             this.MainWindow.Cursor = Cursors.Wait;
 
-            ResearchFileWriter.ClearResearchList();
+            ResearchFileWriter.RecreateResearchList();
             DirectoryInfo di = new DirectoryInfo(UIModel.ModPath);
 
             List<FileInfo> tmpModFiles = new List<FileInfo>();

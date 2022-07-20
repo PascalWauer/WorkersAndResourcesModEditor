@@ -28,7 +28,7 @@ namespace WorkersAndResourcesModEditor
                 {"eletronics", 1112.52}, 
                 {"food", 115.72},
                 {"meat", 297.24}, 
-                {"used nuclear fuel", -1085.85}, 
+                {"nuclearfuelburned", -1085.85}, 
                 {"wood", 8.56},
                 {"nuclearfuel", 42128.84}, 
                 {"gravel", 8.14}, 

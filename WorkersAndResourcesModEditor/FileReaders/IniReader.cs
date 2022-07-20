@@ -242,10 +242,12 @@ namespace WorkersAndResourcesModEditor
 
                 string[] filePathArray = building.FilePath.Split('\\');
 
-                if (building.ProductionSun > 0)
+                if (building.ProductionSun > 0 && building.ProductionList.Any(x => x.Ware == "eletric"))
                     ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "connect_to_sun", building.SubType);
                 else if (building.ProductionWind > 0)
                     ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "connect_to_wind", building.SubType);
+                else if (building.ProductionList.Any(x => x.Ware == "eletric") && building.ProductionList.Any(x => x.Ware == "nuclearfuelburned"))
+                    ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "nuclear_power", building.SubType);
                 else if (building.ProductionList != null && building.ProductionList.Count == 1 && building.ProductionList[0].Ware == "plants" && building.ConsumptionList != null && building.ConsumptionList.Any(x => x.Ware == "chemicals"))
                     ResearchFileWriter.InsertIntoList(building.WorkshopID + "/" + filePathArray[filePathArray.Length - 2], "greenhouse", building.SubType);
                 else if (building.ProductionList != null && building.ProductionList.Count == 1)

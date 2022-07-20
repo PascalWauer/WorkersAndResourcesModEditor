@@ -70,9 +70,10 @@ namespace WorkersAndResourcesModEditor
     {
         private static List<Research> ResearchBuildings = new List<Research>();
 
-        public static void ClearResearchList()
+        public static void RecreateResearchList()
         {
             ResearchBuildings.Clear();
+            AddVanillaResearchBuildings();
         }
 
         public static void InsertIntoList(string buildingId, string line, string subtype = null)
@@ -99,6 +100,8 @@ namespace WorkersAndResourcesModEditor
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.Nuclear_2, Type = ResearchType.TYPE_MEDICAL });
             else if (line.Contains("nuclearfuel"))
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.Nuclear_3, Type = ResearchType.TYPE_MEDICAL });
+            else if (line.Contains("nuclear_power"))
+                ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.Nuclear_4, Type = ResearchType.TYPE_MEDICAL });
             else if (line.Contains("connect_to_sun"))
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.SolarEnergy, Type = ResearchType.TYPE_MEDICAL });
             else if (line.Contains("fuel") || line.Contains("bitumen"))
@@ -142,18 +145,18 @@ namespace WorkersAndResourcesModEditor
             else if (subtype == "television")
                 ResearchBuildings.Add(new Research() { BuildingId = buildingId, ResearchId = ResearchIds.tv_2, Type = ResearchType.TYPE_SOVIET });
 
-
         }
 
         public static void WriteResearchFile()
         {
-            AddVanillaResearchBuildings();
+            //AddVanillaResearchBuildings();
             string path = Environment.CurrentDirectory;
             using (StreamWriter sw = new StreamWriter(Path.Combine(path, "research.ini")))
             {
                 //List<ResearchGroup> groups = ResearchBuildings.Select(x => new ResearchGroup { ResearchId = x.ResearchId, Type = x.Type }).DistinctBy(x => x.ResearchId).ToList();
                 //CreateResearchGroups(groups);
-                List<ResearchGroup> groups = AddResearchGroups();
+                List<ResearchGroup> groups = new List<ResearchGroup>();
+                groups.AddRange(CreateResearchGroups());
                 foreach (var group in groups)
                 {
                     sw.WriteLine("$RESEARCH " + group.ResearchId);
@@ -194,7 +197,7 @@ namespace WorkersAndResourcesModEditor
                 }
             }
         }
-        private static List<ResearchGroup> AddResearchGroups()
+        private static List<ResearchGroup> CreateResearchGroups()
         {
             List<ResearchGroup> groups = new List<ResearchGroup>();
 
@@ -437,12 +440,14 @@ namespace WorkersAndResourcesModEditor
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Electronics_2, BuildingId = "eletronic_factory", Type = ResearchType.TYPE_TECHNICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_1, BuildingId = "mechanical_components_factory", Type = ResearchType.TYPE_TECHNICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Wind, BuildingId = "powerplant_wind1", Type = ResearchType.TYPE_TECHNICAL });
+            ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Wind, BuildingId = "powerplant_wind2", Type = ResearchType.TYPE_TECHNICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.OilMining, BuildingId = "oil_mine", Type = ResearchType.TYPE_TECHNICAL });
 
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Chemistry_1, BuildingId = "chemical_plant", Type = ResearchType.TYPE_MEDICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Chemistry_2, BuildingId = "plastics_factory", Type = ResearchType.TYPE_MEDICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.OilProcessing, BuildingId = "oil_rafinery", Type = ResearchType.TYPE_MEDICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.OilProcessing, BuildingId = "oil_rafinery_v2", Type = ResearchType.TYPE_MEDICAL });
+            ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.SolarEnergy, BuildingId = "powerplant_solar", Type = ResearchType.TYPE_TECHNICAL });
 
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Aluminum_1, BuildingId = "bauxite_mine", Type = ResearchType.TYPE_MEDICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Aluminum_1, BuildingId = "bauxite_processing", Type = ResearchType.TYPE_MEDICAL });
