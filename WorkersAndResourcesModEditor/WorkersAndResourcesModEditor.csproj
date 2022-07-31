@@ -7,88 +7,88 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Images\aluminum_1.png">
+    <None Update="research\aluminum_1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\engineering_2.png">
+    <None Update="research\engineering_2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\fertilizer.png">
+    <None Update="research\fertilizer.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\nuclear_4.png">
+    <None Update="research\nuclear_4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\oilmining.png">
+    <None Update="research\oilmining.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\oilprocessing.png">
+    <None Update="research\oilprocessing.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\radio_1.png">
+    <None Update="research\radio_1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\secretpolice.png">
+    <None Update="research\secretpolice.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\tv_1.png">
+    <None Update="research\tv_1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\_aluminum_1.png">
+    <None Update="research\_aluminum_1.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Images\_aluminum_2.png">
+    <None Update="research\_aluminum_2.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Images\chemistry_1.png">
+    <None Update="research\chemistry_1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\chemistry_2.png">
+    <None Update="research\chemistry_2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\electronics_1.png">
+    <None Update="research\electronics_1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\electronics_2.png">
+    <None Update="research\electronics_2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\engineering_1.png">
+    <None Update="research\engineering_1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\nuclear_0.png">
+    <None Update="research\nuclear_0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\nuclear_1.png">
+    <None Update="research\nuclear_1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\nuclear_2.png">
+    <None Update="research\nuclear_2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\nuclear_3.png">
+    <None Update="research\nuclear_3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\nuclearsafety.png">
+    <None Update="research\nuclearsafety.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\production_airplane.png">
+    <None Update="research\production_airplane.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\production_ship.png">
+    <None Update="research\production_ship.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\production_train.png">
+    <None Update="research\production_train.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\production_vehicle.png">
+    <None Update="research\production_vehicle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\solar_energy.png">
+    <None Update="research\solar_energy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\wind_energy.png">
+    <None Update="research\wind_energy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Images\aluminum_2.png">
+    <None Update="research\aluminum_2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

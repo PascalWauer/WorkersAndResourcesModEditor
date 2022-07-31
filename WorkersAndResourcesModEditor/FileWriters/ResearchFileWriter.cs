@@ -151,7 +151,7 @@ namespace WorkersAndResourcesModEditor
         {
             //AddVanillaResearchBuildings();
             string path = Environment.CurrentDirectory;
-            using (StreamWriter sw = new StreamWriter(Path.Combine(path, "research.ini")))
+            using (StreamWriter sw = new StreamWriter(Path.Combine(path, "research", "research.ini")))
             {
                 //List<ResearchGroup> groups = ResearchBuildings.Select(x => new ResearchGroup { ResearchId = x.ResearchId, Type = x.Type }).DistinctBy(x => x.ResearchId).ToList();
                 //CreateResearchGroups(groups);

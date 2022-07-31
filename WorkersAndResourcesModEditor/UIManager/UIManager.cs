@@ -120,6 +120,7 @@ namespace WorkersAndResourcesModEditor
             if (UIModel.Search == "createresearch")
             {
                 ResearchFileWriter.WriteResearchFile();
+                Process.Start("explorer.exe", Environment.CurrentDirectory);
             }
             else
                 UIModel.SetFilters();
