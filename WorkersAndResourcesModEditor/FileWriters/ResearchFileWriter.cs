@@ -320,7 +320,15 @@ namespace WorkersAndResourcesModEditor
                 Name = "Basic Mechanical Technology",
                 Cost = 2000,
                 Description = "",
-                NextResearches = new List<string>() { ResearchIds.OilMining, ResearchIds.Vehicles, ResearchIds.Ships, ResearchIds.Trains }
+                NextResearches = new List<string>() { ResearchIds.Engineering_2, ResearchIds.OilMining, ResearchIds.Vehicles, ResearchIds.Ships, ResearchIds.Trains }
+            });
+            groups.Add(new ResearchGroup()
+            {
+                ResearchId = ResearchIds.Engineering_2,
+                Type = ResearchType.TYPE_TECHNICAL,
+                Name = "Advanced Engineering Technology",
+                Cost = 2500,
+                Description = "Develope safe cable wagons to transport passengers and wares to and from steep mountains."
             });
             groups.Add(new ResearchGroup()
             {
@@ -425,6 +433,8 @@ namespace WorkersAndResourcesModEditor
         private static void AddVanillaResearchBuildings()
         {
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Vehicles, BuildingId = "production_vehicle", Type = ResearchType.TYPE_TECHNICAL });
+            ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Vehicles, BuildingId = "spaceforvehicles_small", Type = ResearchType.TYPE_TECHNICAL });
+            ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Vehicles, BuildingId = "spaceforvehicles_big", Type = ResearchType.TYPE_TECHNICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Ships, BuildingId = "drydock", Type = ResearchType.TYPE_TECHNICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Trains, BuildingId = "production_train2", Type = ResearchType.TYPE_TECHNICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Airplanes, BuildingId = "production_airplane", Type = ResearchType.TYPE_TECHNICAL });
@@ -435,10 +445,29 @@ namespace WorkersAndResourcesModEditor
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Nuclear_3, BuildingId = "nuclear_fuel_plant", Type = ResearchType.TYPE_TECHNICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Nuclear_4, BuildingId = "powerplant_nuclear_single", Type = ResearchType.TYPE_TECHNICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Nuclear_4, BuildingId = "powerplant_nuclear_double", Type = ResearchType.TYPE_TECHNICAL });
+            ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Nuclear_4, BuildingId = "zaporozie_reactor", Type = ResearchType.TYPE_TECHNICAL });
 
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Electronics_1, BuildingId = "eletronic_components_factory", Type = ResearchType.TYPE_TECHNICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Electronics_2, BuildingId = "eletronic_factory", Type = ResearchType.TYPE_TECHNICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_1, BuildingId = "mechanical_components_factory", Type = ResearchType.TYPE_TECHNICAL });
+            ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "cableway_station_small", Type = ResearchType.TYPE_TECHNICAL });
+            ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "cableway_station_big", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "cableway_station_cargo", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "cableway_station_cargo2", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "cableway_gravel_loading_big", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "cableway_gravel_unloading_big", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "cableway_pole_light_1", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "cableway_pole_light_2", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "cableway_pole_light_3", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "cableway_pole_light_4", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "cableway_pole_heavy_1", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "cableway_pole_heavy_2", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "cableway_pole_heavy_3", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "cableway_pole_heavy_4", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "trolleybus_depo", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "rail_trafo", Type = ResearchType.TYPE_TECHNICAL });
+            //ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Engineering_2, BuildingId = "road_trafo", Type = ResearchType.TYPE_TECHNICAL });
+
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Wind, BuildingId = "powerplant_wind1", Type = ResearchType.TYPE_TECHNICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.Wind, BuildingId = "powerplant_wind2", Type = ResearchType.TYPE_TECHNICAL });
             ResearchBuildings.Add(new Research() { ResearchId = ResearchIds.OilMining, BuildingId = "oil_mine", Type = ResearchType.TYPE_TECHNICAL });
