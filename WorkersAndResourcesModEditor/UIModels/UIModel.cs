@@ -10,7 +10,7 @@ using System.Windows.Data;
 
 namespace WorkersAndResourcesModEditor
 {
-    public class UIModels : INotifyPropertyChanged
+    public class UIModel : INotifyPropertyChanged
     {
         public string ConfigPath { get; set; }
 
@@ -429,7 +429,7 @@ namespace WorkersAndResourcesModEditor
         }
 
 
-        public UIModels()
+        public UIModel()
         {
             //Z:\Spiele\Steam\steamapps\workshop\content\784150
             this.ModPath = @"Enter path to mods folder here! (... \784150)";

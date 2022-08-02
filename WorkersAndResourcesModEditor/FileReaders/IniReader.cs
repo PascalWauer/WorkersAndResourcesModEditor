@@ -11,7 +11,7 @@ namespace WorkersAndResourcesModEditor
 {
     public static class IniReader
     {
-        public static UIModelBuildingIni ReadBuildingIni(string file)
+        public static UIModelBuildingIni ReadBuildingIni(string file, ref string errorMessage)
         {
             string line = "";
             UIModelBuildingIni building = new UIModelBuildingIni();
@@ -72,6 +72,8 @@ namespace WorkersAndResourcesModEditor
                     // the file is reached.
                     while ((line = sr.ReadLine()) != null)
                     {
+                        line = line.Replace("\t", " ").Replace("  ", " ");
+
                         if (line.StartsWith(@"//") || line.StartsWith(@"--") || line.StartsWith(@";"))
                             continue;
 
@@ -269,9 +271,10 @@ namespace WorkersAndResourcesModEditor
             }
             catch (global::System.Exception ex)
             {
-                MessageBox.Show("Error in line: " + line + Environment.NewLine + ex.Message);
+                //MessageBox.Show("Error in line: " + line + Environment.NewLine + ex.Message);
+                errorMessage += "An error occured while reading mod with WorkshopID: " + building.WorkshopID + " in building: \"" + building.BuildingName + "\" in line: " + line + Environment.NewLine + ex.Message + Environment.NewLine;
 #if DEBUG
-                throw new Exception("Error in line: " + line + Environment.NewLine + ex.Message);
+                throw new Exception("An error occured while reading mod with WorkshopID: " + building.WorkshopID + " in building: \"" + building.BuildingName + "\" in line: " + line + Environment.NewLine + ex.Message + Environment.NewLine);
 #endif
                 return building;
             }
@@ -280,107 +283,100 @@ namespace WorkersAndResourcesModEditor
         {
             if (line.Contains("RESOURCE_TRANSPORT_OPEN"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
                 building.StorageCapacityOpen = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_COVERED"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
                 building.StorageCapacityCovered = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_LIVESTOCK"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
                 building.StorageCapacityLivestock = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_CEMENT"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
+
                 building.StorageCapacityCement = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_COOLER"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
                 building.StorageCapacityCooler = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_PASSANGER"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
                 building.StorageCapacityPassenger = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_GRAVEL"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
                 building.StorageCapacityGravel = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_CONCRETE"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
                 building.StorageCapacityConcrete = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_VEHICLES"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
                 building.StorageCapacityVehicles = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_OIL"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
                 building.StorageCapacityOil = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_GENERAL"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
                 building.StorageCapacityGeneral = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_NUCLEAR1"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
                 building.StorageCapacityNuclear1 = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_NUCLEAR2"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
                 building.StorageCapacityNuclear2 = result;
                 return;
             }            
             if (line.Contains("RESOURCE_TRANSPORT_WATER"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
                 building.StorageCapacityWater = result;
                 return;
             }
             if (line.Contains("RESOURCE_TRANSPORT_SEWAGE"))
             {
-                string[] lineElements = line.Split(' ');
-                Double.TryParse(lineElements[lineElements.Length - 1], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                double result = ExtractStorageAmount(line);
                 building.StorageCapacitySewage = result;
+                return;
+            }
+            // not yet supported but no error
+            if (line.Contains("RESOURCE_TRANSPORT_ELETRIC"))
+            {
+                // do nothing
+                //double result = ExtractStorageAmount(line);
                 return;
             }
             else
@@ -388,35 +384,60 @@ namespace WorkersAndResourcesModEditor
                 throw new Exception("Unknown storage type in file " + building.FilePath);
             }
         }
-        private static void SetSpecialStorage(string line, UIModelBuildingIni building)
-        {
-            if (string.IsNullOrEmpty(building.StorageSpecialID1))
-            {
-                string[] lineElements = line.Split(' ').Where(x => !string.IsNullOrEmpty(x)).ToArray();
-                
-                int end = lineElements.Length - 1;
-                if (string.IsNullOrEmpty(lineElements[lineElements.Length -1]))
-                    end = lineElements.Length - 2;
-                building.StorageSpecialID1 = lineElements[end];
 
-                Double.TryParse(lineElements[end - 1], out double result);
-                building.StorageSpecial1Capacity = result;
-                return;
-            }
-            else if (string.IsNullOrEmpty(building.StorageSpecialID2))
+        private static double ExtractStorageAmount(string line)
+        {
+            string[] lineElements = line.Split(' ');
+            if (lineElements.Length >= 3)
             {
-                string[] lineElements = line.Split(' ').Where(x => !string.IsNullOrEmpty(x)).ToArray();
-                int end = lineElements.Length - 1;
-                if (string.IsNullOrEmpty(lineElements[lineElements.Length - 1]))
-                    end = lineElements.Length - 2;
-                building.StorageSpecialID2 = lineElements[end];
-                Double.TryParse(lineElements[end -1], out double result);
-                building.StorageSpecial2Capacity = result;
-                return;
+                Double.TryParse(lineElements[2], NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+                return result;
             }
             else
+                return 0;
+        }
+
+        private static void SetSpecialStorage(string line, UIModelBuildingIni building)
+        {
+            try
             {
-                throw new Exception("More than 2 special storages detected in file " + building.FilePath);
+                if (building.SpecialStorageList == null)
+                    building.SpecialStorageList = new ObservableCollection<UIModelWareAmount>();
+
+                string[] lineElements = line.Split(' ').Where(x => !string.IsNullOrEmpty(x)).ToArray();
+
+                Double.TryParse(lineElements[2], out double amount);
+                UIModelWareAmount specialStorage = new UIModelWareAmount(lineElements[3], amount);
+                building.SpecialStorageList.Add(specialStorage);
+            }
+            //if (string.IsNullOrEmpty(building.StorageSpecialID1))
+            //{
+            //    string[] lineElements = line.Split(' ').Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                
+            //    int end = lineElements.Length - 1;
+            //    if (string.IsNullOrEmpty(lineElements[lineElements.Length -1]))
+            //        end = lineElements.Length - 2;
+            //    building.StorageSpecialID1 = lineElements[end];
+
+            //    Double.TryParse(lineElements[end - 1], out double result);
+            //    building.StorageSpecial1Capacity = result;
+            //    return;
+            //}
+            //else if (string.IsNullOrEmpty(building.StorageSpecialID2))
+            //{
+            //    string[] lineElements = line.Split(' ').Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            //    int end = lineElements.Length - 1;
+            //    if (string.IsNullOrEmpty(lineElements[lineElements.Length - 1]))
+            //        end = lineElements.Length - 2;
+            //    building.StorageSpecialID2 = lineElements[end];
+            //    Double.TryParse(lineElements[end -1], out double result);
+            //    building.StorageSpecial2Capacity = result;
+            //    return;
+            //}
+            catch
+            {
+                //throw new Exception("More than 2 special storages detected in file " + building.FilePath);
+                throw new Exception("An error occured while reading mod with workshopID: " + building.WorkshopID + " in building: " + building.BuildingName + Environment.NewLine + " in line: " + line);
             }
         }
     }

@@ -234,6 +234,23 @@ namespace WorkersAndResourcesModEditor
             }
         }
 
+        private ObservableCollection<UIModelWareAmount> _SpecialStorageList;
+        public ObservableCollection<UIModelWareAmount> SpecialStorageList
+        {
+            get { return _SpecialStorageList; }
+            set
+            {
+                if (_SpecialStorageList != value)
+                {
+                    if (_SpecialStorageList != value)
+                    {
+                        _SpecialStorageList = value;
+                        this.NotifyPropertyChanged();
+                    }
+                }
+            }
+        }
+
         private ObservableCollection<UIModelWareAmount> _ProductionList;
         public ObservableCollection<UIModelWareAmount> ProductionList
         {
@@ -313,6 +330,16 @@ namespace WorkersAndResourcesModEditor
             {
                 if (ConsumptionList.Count > 0)
                     return ConsumptionList[0].Ware + ConsumptionList[0].Amount;
+                else
+                    return string.Empty;
+            }
+        }
+        public string SpecialStorageSorting
+        {
+            get
+            {
+                if (SpecialStorageList != null && SpecialStorageList.Count > 0)
+                    return SpecialStorageList[0].Ware + SpecialStorageList[0].Amount;
                 else
                     return string.Empty;
             }

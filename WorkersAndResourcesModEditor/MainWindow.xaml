@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorkersAndResourcesModEditor"
         mc:Ignorable="d"
-        Title="Workers and Resources Sowjet Republic - Mod Viewer 0.9.3" Height="450" Width="1200" Background="SeaShell">
+        Title="Workers and Resources Sowjet Republic - Mod Viewer 0.9.4" Height="450" Width="1200" Background="SeaShell">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="90"></RowDefinition>
@@ -476,9 +476,35 @@ However, no other costs are included like electricity or worker costs." />
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTemplateColumn Header="Special Storage" Width="120" SortMemberPath="StorageSpecial1Capacity" Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}">
+                <DataGridTemplateColumn Header="Special Storage" Width="130" SortMemberPath="SpecialStorageSorting" Visibility="{Binding Visibility, Source={x:Reference dummyVisibilityStoragesElement}}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
+                            <DataGrid ItemsSource="{Binding SpecialStorageList, IsAsync=False}" 
+                                      AutoGenerateColumns="False" 
+                                      Background="Transparent" 
+                                      BorderThickness="0"
+                                      BorderBrush="Transparent"
+                                      HeadersVisibility="None"
+                                      EnableColumnVirtualization="True" 
+                                      EnableRowVirtualization="True"
+                                      IsHitTestVisible="False"
+                                      GridLinesVisibility="None"
+                                      RowBackground="Transparent"
+                                      >
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                            <Setter Property="Background" Value="Transparent"></Setter>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Ware}" Width="80" FontWeight="Normal" IsReadOnly="True">
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding Amount}" Width="*" FontWeight="Normal" IsReadOnly="True">
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </DataTemplate>
+                        <!--<DataTemplate>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"></RowDefinition>
@@ -513,7 +539,7 @@ However, no other costs are included like electricity or worker costs." />
                                     </TextBlock.Style>
                                 </TextBlock>
                             </Grid>
-                        </DataTemplate>
+                        </DataTemplate>-->
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 

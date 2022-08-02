@@ -12,13 +12,13 @@ namespace WorkersAndResourcesModEditor
 {
     public class UIManager
     {
-        public UIModels UIModel { get; set; }
+        public UIModel UIModel { get; set; }
         public MainWindow MainWindow { get; set; }
         private List<FileInfo> m_ModFiles { get; set; }
         public UIManager()
         {
             MainWindow = new MainWindow();
-            UIModel = new UIModels();
+            UIModel = new UIModel();
 
             MainWindow.DataContext = UIModel;
             MainWindow.CommandBindings.Add(new CommandBinding(WRCommands.RightClickOnModCommand, this.ExecuteRightClickOnModCommand));
@@ -156,10 +156,13 @@ namespace WorkersAndResourcesModEditor
 
             this.UIModel.UIModelBuildingList.Clear();
 
+            string errorMessage = "";
             foreach(FileInfo file in m_ModFiles)
             {
-                this.UIModel.UIModelBuildingList.Add(IniReader.ReadBuildingIni(file.FullName));
+                this.UIModel.UIModelBuildingList.Add(IniReader.ReadBuildingIni(file.FullName, ref errorMessage));
             }
+            if (errorMessage.Length > 1)
+                MessageBox.Show(errorMessage);
 
             this.MainWindow.Cursor = Cursors.Arrow;
             WriteConfigFile();
