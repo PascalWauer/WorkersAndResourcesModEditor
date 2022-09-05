@@ -161,8 +161,8 @@ namespace WorkersAndResourcesModEditor
                 {
                     sw.WriteLine("$RESEARCH " + group.ResearchId);
                     sw.WriteLine("$" + group.Type);
-                    sw.WriteLine("$NAME_STR \"" + group.Name + "\"");
-                    //sw.WriteLine("$DESC \"" + group.Description + "\"");
+                    sw.WriteLine("$NAME " + group.Name);
+                    sw.WriteLine("$DESC " + group.Description);
                     sw.WriteLine("");
 
                     // new group setting type, name, description, cost, availability and next research
@@ -208,106 +208,106 @@ namespace WorkersAndResourcesModEditor
                 ResearchId = ResearchIds.Chemistry_1,
                 Type = ResearchType.TYPE_MEDICAL,
                 IsAvailableAtStart = true,
-                Name = "Basic Chemistry Technology",
+                Name = "12101",
                 Cost = 2000,
-                Description = "",
+                Description = "12201",
                 NextResearches = new List<string>() { ResearchIds.OilProcessing, ResearchIds.SolarEnergy, ResearchIds.Fertilizer, ResearchIds.NuclearSafety }
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.SolarEnergy,
                 Type = ResearchType.TYPE_MEDICAL,
-                Name = "Solar Power Technology",
+                Name = "12104",
                 Cost = 2500,
-                Description = ""
+                Description = "12204"
             });            
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Fertilizer,
                 Type = ResearchType.TYPE_MEDICAL,
-                Name = "Fertilizer",
+                Name = "12105",
                 Cost = 2500,
-                Description = ""
+                Description = "12205"
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.OilProcessing,
                 Type = ResearchType.TYPE_MEDICAL,
-                Name = "Oil Processing Technology",
+                Name = "12103",
                 Cost = 4000,
-                Description = "",
+                Description = "12203",
                 NextResearches = new List<string>() { ResearchIds.Chemistry_2 }
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.NuclearSafety,
                 Type = ResearchType.TYPE_MEDICAL,
-                Name = "Nuclear Safety",
+                Name = "12106",
                 Cost = 3000,
-                Description = "Unlocks uranium mining research",
+                Description = "12206",
                 NextResearches = new List<string>() { ResearchIds.Nuclear_1 }
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Chemistry_2,
                 Type = ResearchType.TYPE_MEDICAL,
-                Name = "Advanced Chemistry Technology",
+                Name = "12102",
                 Cost = 4000,
-                Description = ""
+                Description = "12202"
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Aluminum_1,
                 Type = ResearchType.TYPE_MEDICAL,
                 IsAvailableAtStart = true,
-                Name = "Bauxit Mining Technology",
+                Name = "12111",
                 Cost = 4000,
-                Description = "",
+                Description = "12211",
                 NextResearches = new List<string>() { ResearchIds.Aluminum_2 }
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Aluminum_2,
                 Type = ResearchType.TYPE_MEDICAL,
-                Name = "Aluminum Processing Technology",
+                Name = "12112",
                 Cost = 4000,
-                Description = ""
+                Description = "12212"
             });
             
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Nuclear_1,
                 Type = ResearchType.TYPE_MEDICAL,
-                Name = "Uranium Mining Technology",
+                Name = "12107",
                 Cost = 5000,
-                Description = "",
+                Description = "12207",
                 NextResearches = new List<string>() { ResearchIds.Nuclear_2 }
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Nuclear_2,
                 Type = ResearchType.TYPE_MEDICAL,
-                Name = "Uranium Conversion Technology",
+                Name = "12108",
                 Cost = 10000,
-                Description = "",
+                Description = "12208",
                 NextResearches = new List<string>() { ResearchIds.Nuclear_3 }
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Nuclear_3,
                 Type = ResearchType.TYPE_MEDICAL,
-                Name = "Advanced Uranium Technology",
+                Name = "12109",
                 Cost = 20000,
-                Description = "",
+                Description = "12209",
                 NextResearches = new List<string>() { ResearchIds.Nuclear_4 }
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Nuclear_4,
                 Type = ResearchType.TYPE_MEDICAL,
-                Name = "Nuclear Power",
+                Name = "12110",
                 Cost = 50000,
-                Description = ""
+                Description = "12210"
             });
 
             // "TYPE_TECHNICAL"
@@ -317,85 +317,85 @@ namespace WorkersAndResourcesModEditor
                 ResearchId = ResearchIds.Engineering_1,
                 Type = ResearchType.TYPE_TECHNICAL,
                 IsAvailableAtStart = true,
-                Name = "Basic Mechanical Technology",
+                Name = "12120",
                 Cost = 2000,
-                Description = "",
+                Description = "12220",
                 NextResearches = new List<string>() { ResearchIds.Engineering_2, ResearchIds.OilMining, ResearchIds.Vehicles, ResearchIds.Ships, ResearchIds.Trains }
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Engineering_2,
                 Type = ResearchType.TYPE_TECHNICAL,
-                Name = "Advanced Engineering Technology",
+                Name = "12121",
                 Cost = 2500,
-                Description = "Develope safe cable wagons to transport passengers and wares to and from steep mountains."
+                Description = "12221"
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.OilMining,
                 Type = ResearchType.TYPE_TECHNICAL,
-                Name = "Fluid Mining Technology",
+                Name = "12129",
                 Cost = 3000,
-                Description = ""
+                Description = "12229"
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Vehicles,
                 Type = ResearchType.TYPE_TECHNICAL,
-                Name = "Vehicle Technology",
+                Name = "12122",
                 Cost = 4000,
-                Description = "",
+                Description = "12222",
                 NextResearches = new List<string>() { ResearchIds.Airplanes }
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Ships,
                 Type = ResearchType.TYPE_TECHNICAL,
-                Name = "Ship Technology",
+                Name = "12123",
                 Cost = 5000,
-                Description = ""
+                Description = "12223"
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Trains,
                 Type = ResearchType.TYPE_TECHNICAL,
-                Name = "Train Technology",
+                Name = "12124",
                 Cost = 4000,
-                Description = ""
+                Description = "12224"
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Airplanes,
                 Type = ResearchType.TYPE_TECHNICAL,
-                Name = "Airplane Technology",
+                Name = "12125",
                 Cost = 20000,
-                Description = ""
+                Description = "12225"
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Electronics_1,
                 IsAvailableAtStart = true,
                 Type = ResearchType.TYPE_TECHNICAL,
-                Name = "Basic Electronics Technology",
+                Name = "12126",
                 Cost = 3000,
-                Description = "",
+                Description = "12226",
                 NextResearches = new List<string>() { ResearchIds.Electronics_2, ResearchIds.Wind }
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Electronics_2,
                 Type = ResearchType.TYPE_TECHNICAL,
-                Name = "Advanced Electronics Technology",
+                Name = "12127",
                 Cost = 8000,
-                Description = ""
+                Description = "12227"
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.Wind,
                 Type = ResearchType.TYPE_TECHNICAL,
-                Name = "Wind Power Technology",
+                Name = "12128",
                 Cost = 2500,
-                Description = ""
+                Description = "12228"
             });
 
             // "TYPE_SOVIET"
@@ -405,27 +405,27 @@ namespace WorkersAndResourcesModEditor
                 ResearchId = ResearchIds.SecretPolice,
                 Type = ResearchType.TYPE_SOVIET,
                 IsAvailableAtStart = true,
-                Name = "Secret Police Technology",
+                Name = "12140",
                 Cost = 2500,
-                Description = ""
+                Description = "12240"
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.radio_1,
                 Type = ResearchType.TYPE_SOVIET,
                 IsAvailableAtStart = true,
-                Name = "Radio Broadcast Technology",
+                Name = "12141",
                 Cost = 10000,
-                Description = "",
+                Description = "12241",
                 NextResearches = new List<string>() { ResearchIds.tv_2 }
             });
             groups.Add(new ResearchGroup()
             {
                 ResearchId = ResearchIds.tv_2,
                 Type = ResearchType.TYPE_SOVIET,
-                Name = "Television Broadcast Technology",
+                Name = "12142",
                 Cost = 40000,
-                Description = ""
+                Description = "12242"
             });
 
             return groups;

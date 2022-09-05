@@ -1,0 +1,249 @@
+
+General -> Resources:
+
+ENGLISH =============================================================================================
+
+552|General_Resources_107|Furniture|
+553|General_Resources_108|Exotic fruits|
+
+German =============================================================================================
+
+552|General_Resources_107|Möbel|
+553|General_Resources_108|Exotische Früchte|
+
+MainTab -> Worker
+
+ENGLISH =============================================================================================
+
+2535|MainTabs_Worker_40|Buys furniture|
+2536|MainTabs_Worker_41|Buys exotic fruits|
+
+German =============================================================================================
+
+2535|MainTabs_Worker_40|Möbel kaufen|
+2536|MainTabs_Worker_41|Exot. Früchte kaufen|
+
+MainTab -> LivingResidential
+
+ENGLISH =============================================================================================
+
+2481|MainTabs_LivingResidential_95|%d Citizen(s) were unable to get furniture|
+2482|MainTabs_LivingResidential_96|%d Citizen(s) were unable to get exotic fruits|
+2483|MainTabs_LivingResidential_99|%d Tourist(s) were unable to get exotic fruits|
+
+German =============================================================================================
+
+2481|MainTabs_LivingResidential_95|%d Bürger konnten kein(e) Möbel bekommen|
+2482|MainTabs_LivingResidential_96|%d Bürger konnten kein(e) exotischen Früchte bekommen|
+2483|MainTabs_LivingResidential_99|%d Tourist(en) konnten kein(e) exotischen Früchte bekommen|
+
+
+General -> Research
+
+ENGLISH =============================================================================================
+
+
+12101|General_ResearchName_01|Basic chemistry|
+12102|General_ResearchName_02|Advanced chemistry|
+12103|General_ResearchName_03|Oil processing|
+12104|General_ResearchName_04|Photovoltaic research|
+12105|General_ResearchName_05|Botany|
+12106|General_ResearchName_06|Nuclear safety|
+12107|General_ResearchName_07|Uranium extraction|
+12108|General_ResearchName_08|Uranium processing|
+12109|General_ResearchName_09|Uranium enrichment|
+12110|General_ResearchName_10|Nuclear fission power generation|
+12111|General_ResearchName_11|Bauxite extraction|
+12112|General_ResearchName_12|Aluminum processing|
+12113|General_ResearchName_13||
+12114|General_ResearchName_14||
+12115|General_ResearchName_15||
+12116|General_ResearchName_16||
+12117|General_ResearchName_17||
+12118|General_ResearchName_18||
+12119|General_ResearchName_19||
+12120|General_ResearchName_20|Mechanics basic research|
+12121|General_ResearchName_21|Advanced mechanics|
+12122|General_ResearchName_22|Vehicle technology|
+12123|General_ResearchName_23|Dry dock technology|
+12124|General_ResearchName_24|Train Technology|
+12125|General_ResearchName_25|Aeronautical technology|
+12126|General_ResearchName_26|Fundamental electronics research|
+12127|General_ResearchName_27|Advanced electronics|
+12128|General_ResearchName_28|Wind energy technology|
+12129|General_ResearchName_29|Oil extraction|
+12130|General_ResearchName_30||
+12131|General_ResearchName_31||
+12132|General_ResearchName_32||
+12133|General_ResearchName_33||
+12134|General_ResearchName_34||
+12135|General_ResearchName_35||
+12136|General_ResearchName_36||
+12137|General_ResearchName_37||
+12138|General_ResearchName_38||
+12139|General_ResearchName_39||
+12140|General_ResearchName_40|Spionage technology|
+12141|General_ResearchName_41|Radio wave research|
+12142|General_ResearchName_42|Cathode ray tube technology|
+12143|General_ResearchName_43||
+12144|General_ResearchName_44||
+12145|General_ResearchName_45||
+12146|General_ResearchName_46||
+12147|General_ResearchName_47||
+12148|General_ResearchName_48||
+12149|General_ResearchName_49||
+12150|General_ResearchName_20||
+12201|General_ResearchDescription_01|Basic chemistry enables chemical factories to be built|
+12202|General_ResearchDescription_02|Advanced chemistry enables plastic to be made|
+12203|General_ResearchDescription_03|Oil processing enables crude oil to be processed in refineries|
+12204|General_ResearchDescription_04|Photovoltaic research enables photovoltaic systems to produce solar energy|
+12205|General_ResearchDescription_05|Botany enables construction of greenhouses to optimize plant growth|
+12206|General_ResearchDescription_06|Nuclear safety provides the basic research for further research on the path to nuclear fission. Unlocks research on uranium extraction|.
+12207|General_ResearchDescription_07|Uranium mining enables mining of uranium in mines|
+12208|General_ResearchDescription_08|Uran processing enables uranium to be further processed in special processing plants|
+12209|General_ResearchDescription_09|Uranium enrichment can be used to produce nuclear fuel. This serves as fuel for nuclear power plants|
+12210|General_ResearchDescription_10|Energy generation by means of nuclear fission enables the construction of entire nuclear power plants|
+12211|General_ResearchDescription_11|Bauxite extraction enables mining of bauxite in mines|
+12212|General_ResearchDescription_12|Aluminum processing enables the production of aluminum from bauxite. Aluminum is needed for the production of airplanes|.
+12213|General_ResearchDescription_13||
+12214|General_ResearchDescription_14||
+12215|General_ResearchDescription_15||
+12216|General_ResearchDescription_16||
+12217|General_ResearchDescription_17||
+12218|General_ResearchDescription_18||
+12219|General_ResearchDescription_19||
+12220|General_ResearchDescription_20|Mechanics basic research enables mechanical components to be manufactured in factories|
+12221|General_ResearchDescription_21|Advanced mechanics enables goods and people to be transported by ropeways|
+12222|General_ResearchDescription_22|Vehicle technology enables the construction of factories for the production of road vehicles of any kind|
+12223|General_ResearchDescription_23|Dry dock technology enables ships to be produced in dry docks|
+12224|General_ResearchDescription_24|Train technology enables rail vehicles to be produced in manufacturing plants|
+12225|General_ResearchDescription_25|Aeronautical technology enables construction of airplanes and helicopters|
+12226|General_ResearchDescription_26|Basic electronics research enables the construction of factories to manufacture electronic components|
+12227|General_ResearchDescription_27|Advanced electronics enables the design of electronics|
+12228|General_ResearchDescription_28|Wind energy technology enables construction of wind turbines to generate electricity from wind energy|
+12229|General_ResearchDescription_29|Oil extraction enables oil to be extracted using derricks from deeper oil fields|
+12230|General_ResearchDescription_30||
+12231|General_ResearchDescription_31||
+12232|General_ResearchDescription_32||
+12233|General_ResearchDescription_33||
+12234|General_ResearchDescription_34||
+12235|General_ResearchDescription_35||
+12236|General_ResearchDescription_36||
+12237|General_ResearchDescription_37||
+12238|General_ResearchDescription_38||
+12239|General_ResearchDescription_39||
+12240|General_ResearchDescription_40|Spying technology allows the establishment of a secret police to monitor citizens|
+12241|General_ResearchDescription_41|Radio wave research enables construction of radio stations to entertain citizens|
+12242|General_ResearchDescription_42|Picture tube technology enables construction of television broadcasting stations to entertain citizens|
+12243|General_ResearchDescription_43||
+12244|General_ResearchDescription_44||
+12245|General_ResearchDescription_45||
+12246|General_ResearchDescription_46||
+12247|General_ResearchDescription_47||
+12248|General_ResearchDescription_48||
+12249|General_ResearchDescription_49||
+12250|General_ResearchDescription_20||
+
+
+GERMAN =============================================================================================
+
+12101|General_ResearchName_01|Chemie Grundlagenforschung|
+12102|General_ResearchName_02|Fortgeschrittene Chemie|
+12103|General_ResearchName_03|Öl-Verarbeitung|
+12104|General_ResearchName_04|Photovoltaik-Forschung|
+12105|General_ResearchName_05|Botanik|
+12106|General_ResearchName_06|Nukleare Sicherheit|
+12107|General_ResearchName_07|Uran-Gewinnung|
+12108|General_ResearchName_08|Uran-Verarbeitung|
+12109|General_ResearchName_09|Urananreicherung|
+12110|General_ResearchName_10|Energiegewinnung mittels Kernspaltung|
+12111|General_ResearchName_11|Bauxit-Gewinnung|
+12112|General_ResearchName_12|Aluminium-Verarbeitung|
+12113|General_ResearchName_13||
+12114|General_ResearchName_14||
+12115|General_ResearchName_15||
+12116|General_ResearchName_16||
+12117|General_ResearchName_17||
+12118|General_ResearchName_18||
+12119|General_ResearchName_19||
+12120|General_ResearchName_20|Mechanik Grundlagenforschung|
+12121|General_ResearchName_21|Fortgeschrittene Mechanik|
+12122|General_ResearchName_22|Fahrzeugtechnik|
+12123|General_ResearchName_23|Trockendock-Technologie|
+12124|General_ResearchName_24|Zug-Technologie|
+12125|General_ResearchName_25|Luftfahrttechnik|
+12126|General_ResearchName_26|Grundlagenforschung Elektronik|
+12127|General_ResearchName_27|Fortgeschrittene Elektronik|
+12128|General_ResearchName_28|Windenergie-Technologie|
+12129|General_ResearchName_29|Öl-Gewinnung|
+12130|General_ResearchName_30||
+12131|General_ResearchName_31||
+12132|General_ResearchName_32||
+12133|General_ResearchName_33||
+12134|General_ResearchName_34||
+12135|General_ResearchName_35||
+12136|General_ResearchName_36||
+12137|General_ResearchName_37||
+12138|General_ResearchName_38||
+12139|General_ResearchName_39||
+12140|General_ResearchName_40|Spionagetechnologie|
+12141|General_ResearchName_41|Funkwellenforschung|
+12142|General_ResearchName_42|Bildröhrentechnologie|
+12143|General_ResearchName_43||
+12144|General_ResearchName_44||
+12145|General_ResearchName_45||
+12146|General_ResearchName_46||
+12147|General_ResearchName_47||
+12148|General_ResearchName_48||
+12149|General_ResearchName_49||
+12150|General_ResearchName_20||
+12201|General_ResearchDescription_01|Chemie Grundlagenforschung ermöglicht den Bau von Chemiefabriken zur Herstellung von Chemikalien|
+12202|General_ResearchDescription_02|Fortgeschrittene Chemie ermöglicht es Plastik herzustellen|
+12203|General_ResearchDescription_03|Öl-Verarbeitung ermöglicht es Rohöl in Raffinerien zu verarbeiten|
+12204|General_ResearchDescription_04|Photovoltaik-Forschung ermöglicht es Photovoltaikanlagen zur Gewinnung von Sonnenenergie herzustellen|
+12205|General_ResearchDescription_05|Botanik ermöglicht die Konstruktion von Gewächshäusern um Pflanzenwachstum zu optimieren|
+12206|General_ResearchDescription_06|Nukleare Sicherheit stellt die Grundlagenforschung für weitere Forschungen auf dem Weg zur Kernspaltung dar. Schaltet die Forschung zur Urangewinnung frei.|
+12207|General_ResearchDescription_07|Uran-Gewinnung ermöglicht den Abbau von Uran in Minen|
+12208|General_ResearchDescription_08|Uran-Verarbeitung ermöglicht es Uran in speziellen Verarbeitungsanlagen weiterzuverarbeiten|
+12209|General_ResearchDescription_09|Mittels Urananreicherung kann Nuklearbrennstoff hergestellt werden. Dieser dient als Brennstoff für Kernkraftwerke|
+12210|General_ResearchDescription_10|Energiegewinnung mittels Kernspaltung ermöglicht den Bau ganzer Kernkraftwerke|
+12211|General_ResearchDescription_11|Bauxit-Gewinnung ermöglicht den Abbau von Bauxit in Minen|
+12212|General_ResearchDescription_12|Aluminium-Verarbeitung ermöglicht die Herstellung von Aluminium aus Bauxit. Aluminium wird für die Herstellung von Flugzeugen benötigt.|
+12213|General_ResearchDescription_13||
+12214|General_ResearchDescription_14||
+12215|General_ResearchDescription_15||
+12216|General_ResearchDescription_16||
+12217|General_ResearchDescription_17||
+12218|General_ResearchDescription_18||
+12219|General_ResearchDescription_19||
+12220|General_ResearchDescription_20|Mechanik Grundlagenforschung ermöglicht es Mechanische Bauteile in Fabriken herzustellen|
+12221|General_ResearchDescription_21|Fortgeschrittene Mechanik ermöglicht es Waren und Personen mittels Seilbahnen zu befördern|
+12222|General_ResearchDescription_22|Fahrzeugtechnik ermöglicht den Bau von Fabriken zur Herstellung von Straßenfahrzeugen jeder Art|
+12223|General_ResearchDescription_23|Trockendock-Technologie ermöglicht es Schiffe in Trockendocks zu produzieren|
+12224|General_ResearchDescription_24|Zug-Technologie ermöglicht es Schienenfahrzeuge in Produktionsanlagen herzustellen|
+12225|General_ResearchDescription_25|Luftfahrttechnik ermöglicht die Konstruktion von Flugzeugen und Helikoptern|
+12226|General_ResearchDescription_26|Grundlagenforschung Elektronik ermöglicht die Konstruktion von Fabriken zur Herstellung von elektronischen Komponenten|
+12227|General_ResearchDescription_27|Fortgeschrittene Elektronik ermöglicht die Konstruktion von Elektronik|
+12228|General_ResearchDescription_28|Windenergie-Technologie ermöglicht den Bau von Windkraftanlagen zur Gewinnung von Strom aus Windenergie|
+12229|General_ResearchDescription_29|Öl-Gewinnung ermöglicht die Förderung von Öl mittels Bohrtürmen aus tiefergelegenen Ölfeldern|
+12230|General_ResearchDescription_30||
+12231|General_ResearchDescription_31||
+12232|General_ResearchDescription_32||
+12233|General_ResearchDescription_33||
+12234|General_ResearchDescription_34||
+12235|General_ResearchDescription_35||
+12236|General_ResearchDescription_36||
+12237|General_ResearchDescription_37||
+12238|General_ResearchDescription_38||
+12239|General_ResearchDescription_39||
+12240|General_ResearchDescription_40|Spionagetechnologie ermöglicht die Errichtung einer Geheimpolizei um Bürger zu überwachen|
+12241|General_ResearchDescription_41|Funkwellenforschung ermöglicht die Konstruktion von Radiosendern um die Bürger zu unterhalten|
+12242|General_ResearchDescription_42|Bildröhrentechnologie ermöglicht die Konstruktion von Fernsehsendeanstalten um die Bürger zu unterhalten|
+12243|General_ResearchDescription_43||
+12244|General_ResearchDescription_44||
+12245|General_ResearchDescription_45||
+12246|General_ResearchDescription_46||
+12247|General_ResearchDescription_47||
+12248|General_ResearchDescription_48||
+12249|General_ResearchDescription_49||
+12250|General_ResearchDescription_20||

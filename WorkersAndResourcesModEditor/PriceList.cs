@@ -52,7 +52,9 @@ namespace WorkersAndResourcesModEditor
                 {"oil", 40.82}, 
                 {"eletric", 0.96},
                 {"water", 8.74},
-                {"sewage", -8.55}
+                {"sewage", -8.55},
+                {"furniture", 170.05},
+                {"exoticfruits", 620.00}
             };
 
             /*

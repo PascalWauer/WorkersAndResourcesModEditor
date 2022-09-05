@@ -1,0 +1,118 @@
+this goes into General -> Resources section:
+
+        <Key id="552" name="General_Resources_107" />
+        <Key id="553" name="General_Resources_108" />
+
+this goes into section Main Tab -> Worker
+
+		<Key id="2535" name="MainTabs_Worker_31" />
+		<Key id="2536" name="MainTabs_Worker_32" />
+
+this goes into section Main Tab -> LivingResidential
+
+        <Key id="2481" name="MainTabs_LivingResidential_95" />
+        <Key id="2482" name="MainTabs_LivingResidential_96" />
+        <Key id="2483" name="MainTabs_LivingResidential_99" />		
+
+this goes below general -> Research section:
+
+		<Key id="12101" name="General_ResearchName_01" />
+		<Key id="12102" name="General_ResearchName_02" />
+		<Key id="12103" name="General_ResearchName_03" />
+		<Key id="12104" name="General_ResearchName_04" />
+		<Key id="12105" name="General_ResearchName_05" />
+		<Key id="12106" name="General_ResearchName_06" />
+		<Key id="12107" name="General_ResearchName_07" />
+		<Key id="12108" name="General_ResearchName_08" />
+		<Key id="12109" name="General_ResearchName_09" />
+		<Key id="12110" name="General_ResearchName_10" />
+		<Key id="12111" name="General_ResearchName_11" />
+		<Key id="12112" name="General_ResearchName_12" />
+		<Key id="12113" name="General_ResearchName_13" />
+		<Key id="12114" name="General_ResearchName_14" />
+		<Key id="12115" name="General_ResearchName_15" />
+		<Key id="12116" name="General_ResearchName_16" />
+		<Key id="12117" name="General_ResearchName_17" />
+		<Key id="12118" name="General_ResearchName_18" />
+		<Key id="12119" name="General_ResearchName_19" />
+		<Key id="12120" name="General_ResearchName_20" />
+		<Key id="12121" name="General_ResearchName_21" />
+		<Key id="12122" name="General_ResearchName_22" />
+		<Key id="12123" name="General_ResearchName_23" />
+		<Key id="12124" name="General_ResearchName_24" />
+		<Key id="12125" name="General_ResearchName_25" />
+		<Key id="12126" name="General_ResearchName_26" />
+		<Key id="12127" name="General_ResearchName_27" />
+		<Key id="12128" name="General_ResearchName_28" />
+		<Key id="12129" name="General_ResearchName_29" />
+		<Key id="12130" name="General_ResearchName_30" />
+		<Key id="12131" name="General_ResearchName_31" />
+		<Key id="12132" name="General_ResearchName_32" />
+		<Key id="12133" name="General_ResearchName_33" />
+		<Key id="12134" name="General_ResearchName_34" />
+		<Key id="12135" name="General_ResearchName_35" />
+		<Key id="12136" name="General_ResearchName_36" />
+		<Key id="12137" name="General_ResearchName_37" />
+		<Key id="12138" name="General_ResearchName_38" />
+		<Key id="12139" name="General_ResearchName_39" />
+		<Key id="12140" name="General_ResearchName_40" />
+		<Key id="12141" name="General_ResearchName_41" />
+		<Key id="12142" name="General_ResearchName_42" />
+		<Key id="12143" name="General_ResearchName_43" />
+		<Key id="12144" name="General_ResearchName_44" />
+		<Key id="12145" name="General_ResearchName_45" />
+		<Key id="12146" name="General_ResearchName_46" />
+		<Key id="12147" name="General_ResearchName_47" />
+		<Key id="12148" name="General_ResearchName_48" />
+		<Key id="12149" name="General_ResearchName_49" />
+		<Key id="12150" name="General_ResearchName_20" />
+		<Key id="12201" name="General_ResearchDescription_01" />
+		<Key id="12202" name="General_ResearchDescription_02" />
+		<Key id="12203" name="General_ResearchDescription_03" />
+		<Key id="12204" name="General_ResearchDescription_04" />
+		<Key id="12205" name="General_ResearchDescription_05" />
+		<Key id="12206" name="General_ResearchDescription_06" />
+		<Key id="12207" name="General_ResearchDescription_07" />
+		<Key id="12208" name="General_ResearchDescription_08" />
+		<Key id="12209" name="General_ResearchDescription_09" />
+		<Key id="12210" name="General_ResearchDescription_10" />
+		<Key id="12211" name="General_ResearchDescription_11" />
+		<Key id="12212" name="General_ResearchDescription_12" />
+		<Key id="12213" name="General_ResearchDescription_13" />
+		<Key id="12214" name="General_ResearchDescription_14" />
+		<Key id="12215" name="General_ResearchDescription_15" />
+		<Key id="12216" name="General_ResearchDescription_16" />
+		<Key id="12217" name="General_ResearchDescription_17" />
+		<Key id="12218" name="General_ResearchDescription_18" />
+		<Key id="12219" name="General_ResearchDescription_19" />
+		<Key id="12220" name="General_ResearchDescription_20" />
+		<Key id="12221" name="General_ResearchDescription_21" />
+		<Key id="12222" name="General_ResearchDescription_22" />
+		<Key id="12223" name="General_ResearchDescription_23" />
+		<Key id="12224" name="General_ResearchDescription_24" />
+		<Key id="12225" name="General_ResearchDescription_25" />
+		<Key id="12226" name="General_ResearchDescription_26" />
+		<Key id="12227" name="General_ResearchDescription_27" />
+		<Key id="12228" name="General_ResearchDescription_28" />
+		<Key id="12229" name="General_ResearchDescription_29" />
+		<Key id="12230" name="General_ResearchDescription_30" />
+		<Key id="12231" name="General_ResearchDescription_31" />
+		<Key id="12232" name="General_ResearchDescription_32" />
+		<Key id="12233" name="General_ResearchDescription_33" />
+		<Key id="12234" name="General_ResearchDescription_34" />
+		<Key id="12235" name="General_ResearchDescription_35" />
+		<Key id="12236" name="General_ResearchDescription_36" />
+		<Key id="12237" name="General_ResearchDescription_37" />
+		<Key id="12238" name="General_ResearchDescription_38" />
+		<Key id="12239" name="General_ResearchDescription_39" />
+		<Key id="12240" name="General_ResearchDescription_40" />
+		<Key id="12241" name="General_ResearchDescription_41" />
+		<Key id="12242" name="General_ResearchDescription_42" />
+		<Key id="12243" name="General_ResearchDescription_43" />
+		<Key id="12244" name="General_ResearchDescription_44" />
+		<Key id="12245" name="General_ResearchDescription_45" />
+		<Key id="12246" name="General_ResearchDescription_46" />
+		<Key id="12247" name="General_ResearchDescription_47" />
+		<Key id="12248" name="General_ResearchDescription_48" />
+		<Key id="12249" name="General_ResearchDescription_49" />
+		<Key id="12250" name="General_ResearchDescription_20" />
