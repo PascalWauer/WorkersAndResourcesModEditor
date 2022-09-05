@@ -115,4 +115,3 @@ this goes below general -> Research section:
 		<Key id="12247" name="General_ResearchDescription_47" />
 		<Key id="12248" name="General_ResearchDescription_48" />
 		<Key id="12249" name="General_ResearchDescription_49" />
-		<Key id="12250" name="General_ResearchDescription_20" />

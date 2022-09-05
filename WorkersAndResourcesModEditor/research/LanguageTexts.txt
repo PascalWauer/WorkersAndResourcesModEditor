@@ -98,13 +98,13 @@ ENGLISH ========================================================================
 12203|General_ResearchDescription_03|Oil processing enables crude oil to be processed in refineries|
 12204|General_ResearchDescription_04|Photovoltaic research enables photovoltaic systems to produce solar energy|
 12205|General_ResearchDescription_05|Botany enables construction of greenhouses to optimize plant growth|
-12206|General_ResearchDescription_06|Nuclear safety provides the basic research for further research on the path to nuclear fission. Unlocks research on uranium extraction|.
+12206|General_ResearchDescription_06|Nuclear safety provides the basic research for further research on the path to nuclear fission. Unlocks research on uranium extraction|
 12207|General_ResearchDescription_07|Uranium mining enables mining of uranium in mines|
 12208|General_ResearchDescription_08|Uran processing enables uranium to be further processed in special processing plants|
 12209|General_ResearchDescription_09|Uranium enrichment can be used to produce nuclear fuel. This serves as fuel for nuclear power plants|
 12210|General_ResearchDescription_10|Energy generation by means of nuclear fission enables the construction of entire nuclear power plants|
 12211|General_ResearchDescription_11|Bauxite extraction enables mining of bauxite in mines|
-12212|General_ResearchDescription_12|Aluminum processing enables the production of aluminum from bauxite. Aluminum is needed for the production of airplanes|.
+12212|General_ResearchDescription_12|Aluminum processing enables the production of aluminum from bauxite. Aluminum is needed for the production of airplanes|
 12213|General_ResearchDescription_13||
 12214|General_ResearchDescription_14||
 12215|General_ResearchDescription_15||
@@ -142,7 +142,6 @@ ENGLISH ========================================================================
 12247|General_ResearchDescription_47||
 12248|General_ResearchDescription_48||
 12249|General_ResearchDescription_49||
-12250|General_ResearchDescription_20||
 
 
 GERMAN =============================================================================================
@@ -205,7 +204,7 @@ GERMAN =========================================================================
 12206|General_ResearchDescription_06|Nukleare Sicherheit stellt die Grundlagenforschung für weitere Forschungen auf dem Weg zur Kernspaltung dar. Schaltet die Forschung zur Urangewinnung frei.|
 12207|General_ResearchDescription_07|Uran-Gewinnung ermöglicht den Abbau von Uran in Minen|
 12208|General_ResearchDescription_08|Uran-Verarbeitung ermöglicht es Uran in speziellen Verarbeitungsanlagen weiterzuverarbeiten|
-12209|General_ResearchDescription_09|Mittels Urananreicherung kann Nuklearbrennstoff hergestellt werden. Dieser dient als Brennstoff für Kernkraftwerke|
+12209|General_ResearchDescription_09|Mittels Urananreicherung kann Nuklearbrennstoff hergestellt werden. Dieser dient als Brennstoff für Kernkraftwerke.|
 12210|General_ResearchDescription_10|Energiegewinnung mittels Kernspaltung ermöglicht den Bau ganzer Kernkraftwerke|
 12211|General_ResearchDescription_11|Bauxit-Gewinnung ermöglicht den Abbau von Bauxit in Minen|
 12212|General_ResearchDescription_12|Aluminium-Verarbeitung ermöglicht die Herstellung von Aluminium aus Bauxit. Aluminium wird für die Herstellung von Flugzeugen benötigt.|
@@ -246,4 +245,3 @@ GERMAN =========================================================================
 12247|General_ResearchDescription_47||
 12248|General_ResearchDescription_48||
 12249|General_ResearchDescription_49||
-12250|General_ResearchDescription_20||
