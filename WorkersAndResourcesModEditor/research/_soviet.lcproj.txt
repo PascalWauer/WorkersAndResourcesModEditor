@@ -5,8 +5,8 @@ this goes into General -> Resources section:
 
 this goes into section Main Tab -> Worker
 
-		<Key id="2535" name="MainTabs_Worker_31" />
-		<Key id="2536" name="MainTabs_Worker_32" />
+		<Key id="2535" name="MainTabs_Worker_40" />
+		<Key id="2536" name="MainTabs_Worker_41" />
 
 this goes into section Main Tab -> LivingResidential
 
